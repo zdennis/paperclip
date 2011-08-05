@@ -13,8 +13,9 @@ gem "mime-types"
 gem "mocha"
 gem "rake"
 gem "rdoc", :require=>false
+gem "capybara"
+gem "cucumber", "~> 1.0.0"
 gem "shoulda"
 gem "sqlite3", "~>1.3.4"
-gem "sprockets", "~> 2.0.0.beta.13", :require=>false
 gem "rails", "~> 2.3.14"
 
