@@ -2,6 +2,7 @@ Given /^I generate a new rails application$/ do
   steps %{
     When I run `bundle exec #{new_application_command} #{APP_NAME}`
     And I cd to "#{APP_NAME}"
+    And I turn off class caching
     And I configure the application to use "capybara"
     And I configure the application to use "paperclip" from this project
     And I reset Bundler environment variable
@@ -70,12 +71,23 @@ Given /^I add this snippet to the User model:$/ do |snippet|
 end
 
 Given /^I start the rails application$/ do
-  $LOAD_PATH.unshift('./lib')
-  require 'paperclip'
-  require 'paperclip/railtie'
   in_current_dir do
     require "./config/environment"
     require "capybara/rails"
+  end
+end
+
+Given /^I reload my application$/ do
+  Rails::Application.reload!
+end
+
+When %r{I turn off class caching} do
+  in_current_dir do
+    file = "config/environments/test.rb"
+    config = IO.read(file)
+    config.gsub!(%r{^\s*config.cache_classes.*$},
+                 "config.cache_classes = false")
+    File.open(file, "w"){|f| f.write(config) }
   end
 end
 

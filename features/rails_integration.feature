@@ -8,13 +8,13 @@ Feature: Rails integration
     And I run a migration
     And I update my new user view to include the file upload field
     And I update my user view to include the attachment
+    And I start the rails application
 
   Scenario: Filesystem integration test
     Given I add this snippet to the User model:
       """
       has_attached_file :attachment
       """
-    And I start the rails application
     When I go to the new user page
     And I fill in "Name" with "something"
     And I attach the file "test/fixtures/5k.png" to "Attachment"
