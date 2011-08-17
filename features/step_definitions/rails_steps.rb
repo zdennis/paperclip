@@ -5,6 +5,7 @@ Given /^I generate a new rails application$/ do
     And I turn off class caching
     And I configure the application to use "capybara"
     And I configure the application to use "gherkin"
+    And I configure the application to use "aws-s3"
     And I configure the application to use "paperclip" from this project
     And I reset Bundler environment variable
     And I successfully run `bundle install --local`
