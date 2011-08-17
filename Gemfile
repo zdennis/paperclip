@@ -13,7 +13,6 @@ gem "rake"
 gem "rdoc", :require => false
 gem "capybara"
 gem "cucumber", "~> 1.0.0"
-gem "cucumber-rails"
 gem "shoulda"
 gem "sqlite3", "~>1.3.4"
 
