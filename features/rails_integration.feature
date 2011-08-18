@@ -1,4 +1,3 @@
-@puts @announce
 Feature: Rails integration
 
   Background:
