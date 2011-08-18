@@ -3,19 +3,15 @@ Given /^I generate a new rails application$/ do
     When I run `bundle exec #{new_application_command} #{APP_NAME}`
     And I cd to "#{APP_NAME}"
     And I turn off class caching
-  }
-
-  if framework_version?("2")
-    append_to_gemfile <<-GEMFILE
+    And I write to "Gemfile" with:
+      """
+      source "http://rubygems.org"
       gem "rails", "#{framework_version}"
       gem "sqlite3"
-    GEMFILE
-  end
-
-  steps %{
-    And I configure the application to use "capybara"
-    And I configure the application to use "gherkin"
-    And I configure the application to use "aws-s3"
+      gem "capybara"
+      gem "gherkin"
+      gem "aws-s3"
+      """
     And I configure the application to use "paperclip" from this project
     And I reset Bundler environment variable
     And I successfully run `bundle install --local`
