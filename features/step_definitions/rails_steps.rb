@@ -3,6 +3,16 @@ Given /^I generate a new rails application$/ do
     When I run `bundle exec #{new_application_command} #{APP_NAME}`
     And I cd to "#{APP_NAME}"
     And I turn off class caching
+  }
+
+  if framework_version?("2")
+    append_to_gemfile <<-GEMFILE
+      gem "rails", "#{framework_version}"
+      gem "sqlite3"
+    GEMFILE
+  end
+
+  steps %{
     And I configure the application to use "capybara"
     And I configure the application to use "gherkin"
     And I configure the application to use "aws-s3"
