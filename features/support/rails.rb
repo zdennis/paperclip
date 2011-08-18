@@ -7,6 +7,7 @@ ENV['RAILS_ENV'] = 'test'
 
 Before do
   ENV['BUNDLE_GEMFILE'] = File.join(Dir.pwd, ENV['BUNDLE_GEMFILE']) unless ENV['BUNDLE_GEMFILE'].start_with?(Dir.pwd)
+  @framework_version = nil
 end
 
 After do
@@ -27,7 +28,7 @@ module RailsCommandHelpers
   end
 
   def framework_version
-    `rails -v`[/^Rails (.+)$/, 1]
+    @framework_version ||= `rails -v`[/^Rails (.+)$/, 1]
   end
 
   def new_application_command
