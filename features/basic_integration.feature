@@ -36,8 +36,8 @@ Feature: Rails integration
       access_key_id: <%= ENV['AWS_ACCESS_KEY_ID'] %>
       secret_access_key: <%= ENV['AWS_SECRET_ACCESS_KEY'] %>
       """
-    And I validate my S3 credentials
     And I start the rails application
+    And I validate my S3 credentials
     When I go to the new user page
     And I fill in "Name" with "something"
     And I attach the file "test/fixtures/5k.png" to "Attachment"
