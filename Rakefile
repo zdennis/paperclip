@@ -27,7 +27,7 @@ end
 
 desc 'Run integration test'
 Cucumber::Rake::Task.new do |t|
-  t.cucumber_opts = %w{--format progress}
+  t.cucumber_opts = %w{--format pretty}
 end
 
 desc 'Start an IRB session with all necessary files required.'
