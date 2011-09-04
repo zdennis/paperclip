@@ -16,8 +16,8 @@ module AWSS3Methods
       )
       AWS::S3::Bucket.objects(bucket, :max_keys => 0)
     rescue AWS::S3::ResponseError => e
-      fail "Could not connect using AWS credentials in AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY. " +
-           "Please make sure these are set in your environment."
+      fail "Could not connect using AWS credentials in AWS_ACCESS_KEY_ID=#{key} and AWS_SECRET_ACCESS_KEY=#{secret} to the bucket '#{bucket}'. " +
+           "Please make sure these are set in your environment." + e.message
     end
   end
 end
