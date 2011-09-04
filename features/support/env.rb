@@ -4,7 +4,7 @@ require 'test/unit/assertions'
 World(Test::Unit::Assertions)
 
 Before do
-  @aruba_timeout_seconds = 90
+  @aruba_timeout_seconds = 120
 end
 
 if ENV['TRAVIS']
