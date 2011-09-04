@@ -4,7 +4,7 @@ rvm:
   - ree
   - rbx-2.0
 
-before_script: "sudo -b ntpdate ntp.ubuntu.com pool.ntp.org; exit 0"
+before_script: "sudo -b ntpdate ntp.ubuntu.com pool.ntp.org; true"
 script: "bundle exec cucumber"
 
 gemfile:
