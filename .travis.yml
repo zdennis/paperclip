@@ -4,7 +4,7 @@ rvm:
   - ree
   - rbx-2.0
 
-before_script: "sudo ntpdate -b ntp.ubuntu.com pool.ntp.org; true"
+before_script: "sudo ntpdate -ub ntp.ubuntu.com pool.ntp.org; true"
 script: "bundle exec rake clean test cucumber"
 
 gemfile:
