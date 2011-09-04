@@ -5,7 +5,7 @@ rvm:
   - rbx-2.0
 
 before_script: "sudo ntpdate -b ntp.ubuntu.com pool.ntp.org; true"
-script: "bundle exec cucumber"
+script: "bundle exec rake clean test cucumber"
 
 gemfile:
   - gemfiles/rails2.gemfile
