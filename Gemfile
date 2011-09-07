@@ -16,6 +16,7 @@ gem "capybara"
 gem "cucumber", "~> 1.0.0"
 gem "shoulda"
 gem "sqlite3", "~>1.3.4"
+gem "fakeweb", :require => false
 
 # gem "ruby-debug", :platform => :ruby_18
 # gem "ruby-debug19", :platform => :ruby_19

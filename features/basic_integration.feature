@@ -32,16 +32,15 @@ Feature: Rails integration
       """
     And I write to "config/s3.yml" with:
       """
-      bucket: <%= ENV['PAPERCLIP_TEST_BUCKET'] || 'paperclip' %>
-      access_key_id: <%= ENV['AWS_ACCESS_KEY_ID'] %>
-      secret_access_key: <%= ENV['AWS_SECRET_ACCESS_KEY'] %>
+      bucket: paperclip
+      access_key_id: access_key
+      secret_access_key: secret_key
       """
     And I start the rails application
-    And I validate my S3 credentials
     When I go to the new user page
     And I fill in "Name" with "something"
-    And I attach the file "test/fixtures/5k.png" to "Attachment"
+    And I attach the file "test/fixtures/5k.png" to "Attachment" on S3
     And I press "Submit"
     Then I should see "Name: something"
-    And I should see an image with a path of "http://s3.amazonaws.com/%{BUCKET_NAME}/attachments/1/original/5k.png"
-    And the file at "http://s3.amazonaws.com/%{BUCKET_NAME}/attachments/1/original/5k.png" is the same as "test/fixtures/5k.png"
+    And I should see an image with a path of "http://s3.amazonaws.com/paperclip/attachments/1/original/5k.png"
+    And the file at "http://s3.amazonaws.com/paperclip/attachments/1/original/5k.png" should be uploaded to S3
