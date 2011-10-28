@@ -1,5 +1,6 @@
 # encoding: utf-8
 require 'uri'
+require 'paperclip/url_generator'
 
 module Paperclip
   # The Attachment class manages the files for a given attachment. It saves
@@ -25,7 +26,8 @@ module Paperclip
         :use_default_time_zone => true,
         :hash_digest           => "SHA1",
         :hash_data             => ":class/:attachment/:id/:style/:updated_at",
-        :preserve_files        => false
+        :preserve_files        => false,
+        :interpolator          => Paperclip::Interpolations
       }
     end
 
@@ -56,7 +58,7 @@ module Paperclip
     #  +processors+ - classes that transform the attachment. Defaults to [:thumbnail]
     #  +preserve_files+ - whether to keep files on the filesystem when deleting to clearing the attachment. Defaults to false
     #  +interpolator+ - the object used to interpolate filenames and URLs. Defaults to Paperclip::Interpolations
-    def initialize name, instance, options = {}
+    def initialize(name, instance, options = {})
       @name              = name
       @instance          = instance
 
@@ -68,7 +70,7 @@ module Paperclip
       @queued_for_write      = {}
       @errors                = {}
       @dirty                 = false
-      @interpolator          = (options[:interpolator] || Paperclip::Interpolations)
+      @interpolator          = options[:interpolator]
 
       initialize_storage
     end
@@ -131,12 +133,8 @@ module Paperclip
     # security, however, for performance reasons. Set use_timestamp to false
     # if you want to stop the attachment update time appended to the url
     def url(style_name = default_style, options = {})
-      options = handle_url_options(options)
-      url = interpolate(most_appropriate_url, style_name)
-
-      url = url_timestamp(url) if options[:timestamp]
-      url = escape_url(url)    if options[:escape]
-      url
+      url_generator = UrlGenerator.new(self, @options)
+      url_generator.for(style_name, options)
     end
 
     # Returns the path of the attachment as defined by the :path option. If the
@@ -327,44 +325,6 @@ module Paperclip
     end
 
     private
-
-    def handle_url_options(options)
-      timestamp = extract_timestamp(options)
-      options = {} if options == true || options == false
-      options[:timestamp] = timestamp
-      options[:escape] = true if options[:escape].nil?
-      options
-    end
-
-    def extract_timestamp(options)
-      possibilities = [((options == true || options == false) ? options : nil),
-                       (options.respond_to?(:[]) ? options[:timestamp] : nil),
-                       @options.use_timestamp]
-      possibilities.find{|n| !n.nil? }
-    end
-
-    def default_url
-      return @options.default_url.call(self) if @options.default_url.is_a?(Proc)
-      @options.default_url
-    end
-
-    def most_appropriate_url
-      if original_filename.nil?
-        default_url
-      else
-        @options.url
-      end
-    end
-
-    def url_timestamp(url)
-      return url unless updated_at
-      delimiter_char = url.include?("?") ? "&" : "?"
-      "#{url}#{delimiter_char}#{updated_at.to_s}"
-    end
-
-    def escape_url(url)
-      url.respond_to?(:escape) ? url.escape : URI.escape(url)
-    end
 
     def ensure_required_accessors! #:nodoc:
       %w(file_name).each do |field|
