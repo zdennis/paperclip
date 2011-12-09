@@ -35,6 +35,7 @@ module Paperclip
 
       def flush_writes #:nodoc:
         @queued_for_write.each do |style_name, file|
+          p file
           file.close
           FileUtils.mkdir_p(File.dirname(path(style_name)))
           log("saving #{path(style_name)}")
@@ -47,8 +48,10 @@ module Paperclip
           FileUtils.chmod(0666&~File.umask, path(style_name))
         end
 
-        after_flush_writes # allows attachment to clean up temp files
-
+      @queued_for_write.each do |style, file|
+        file.close unless file.closed?
+        file.unlink if file.respond_to?(:unlink) && file.path.present? && File.exist?(file.path)
+      end
         @queued_for_write = {}
       end
 

@@ -1,0 +1,436 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+AWS	test/storage/s3_test.rb	/^          class AWS::S3::NoSuchBucket < AWS::S3::ResponseError$/;"	c
+ActionController	shoulda_macros/paperclip.rb	/^  class ActionController::Integration::Session  #:nodoc:$/;"	c
+Attachment	lib/paperclip/attachment.rb	/^  class Attachment$/;"	c	class:Paperclip
+AttachmentHelpers	features/step_definitions/attachment_steps.rb	/^module AttachmentHelpers$/;"	m
+AttachmentTest	test/attachment_test.rb	/^class AttachmentTest < Test::Unit::TestCase$/;"	c
+CallbackCompatability	lib/paperclip/callback_compatibility.rb	/^  module CallbackCompatability$/;"	m	class:Paperclip
+ClassMethods	lib/paperclip.rb	/^  module ClassMethods$/;"	m
+CommandNotFoundError	lib/paperclip.rb	/^  class CommandNotFoundError < PaperclipError$/;"	c
+Defining	lib/paperclip/callback_compatibility.rb	/^      module Defining$/;"	m	class:Paperclip.CallbackCompatability.Rails21
+Defining	lib/paperclip/callback_compatibility.rb	/^      module Defining$/;"	m	class:Paperclip.CallbackCompatability.Rails3
+Dummy	test/attachment_test.rb	/^class Dummy; end$/;"	c
+Dummy2	test/paperclip_test.rb	/^      class Dummy2 < ActiveRecord::Base$/;"	c
+Factory	shoulda_macros/paperclip.rb	/^  class Factory$/;"	c
+FactoryGirl	shoulda_macros/paperclip.rb	/^  class FactoryGirl::Factory$/;"	c
+FakeModel	test/helper.rb	/^class FakeModel$/;"	c
+File	lib/paperclip/upfile.rb	/^class File #:nodoc:$/;"	c
+FileHelpers	features/step_definitions/rails_steps.rb	/^module FileHelpers$/;"	m
+FileSystemTest	test/storage/filesystem_test.rb	/^class FileSystemTest < Test::Unit::TestCase$/;"	c
+Filesystem	lib/paperclip/storage/filesystem.rb	/^    module Filesystem$/;"	m	class:Paperclip.Storage
+Fog	lib/paperclip/storage/fog.rb	/^    module Fog$/;"	m	class:Paperclip.Storage
+FogTest	test/storage/fog_test.rb	/^class FogTest < Test::Unit::TestCase$/;"	c
+Geometry	lib/paperclip/geometry.rb	/^  class Geometry$/;"	c	class:Paperclip
+GeometryTest	test/geometry_test.rb	/^class GeometryTest < Test::Unit::TestCase$/;"	c
+Glue	lib/paperclip.rb	/^  module Glue$/;"	m
+HaveAttachedFileMatcher	lib/paperclip/matchers/have_attached_file_matcher.rb	/^      class HaveAttachedFileMatcher$/;"	c	class:Paperclip.Shoulda.Matchers
+HaveAttachedFileMatcherTest	test/matchers/have_attached_file_matcher_test.rb	/^class HaveAttachedFileMatcherTest < Test::Unit::TestCase$/;"	c
+HtmlSelectorsHelpers	features/support/selectors.rb	/^module HtmlSelectorsHelpers$/;"	m
+IOStream	lib/paperclip/iostream.rb	/^module IOStream$/;"	m
+IOStreamTest	test/iostream_test.rb	/^class IOStreamTest < Test::Unit::TestCase$/;"	c
+InfiniteInterpolationError	lib/paperclip.rb	/^  class InfiniteInterpolationError < PaperclipError #:nodoc:$/;"	c
+InstanceMethods	lib/paperclip.rb	/^  module InstanceMethods #:nodoc:$/;"	m
+IntegrationTest	test/integration_test.rb	/^class IntegrationTest < Test::Unit::TestCase$/;"	c
+Interpolations	lib/paperclip/interpolations.rb	/^  module Interpolations$/;"	m	class:Paperclip
+InterpolationsTest	test/interpolations_test.rb	/^class InterpolationsTest < Test::Unit::TestCase$/;"	c
+Matchers	lib/paperclip/matchers.rb	/^    module Matchers$/;"	m	class:Paperclip.Shoulda
+Matchers	lib/paperclip/matchers/have_attached_file_matcher.rb	/^    module Matchers$/;"	m	class:Paperclip.Shoulda
+Matchers	lib/paperclip/matchers/validate_attachment_content_type_matcher.rb	/^    module Matchers$/;"	m	class:Paperclip.Shoulda
+Matchers	lib/paperclip/matchers/validate_attachment_presence_matcher.rb	/^    module Matchers$/;"	m	class:Paperclip.Shoulda
+Matchers	lib/paperclip/matchers/validate_attachment_size_matcher.rb	/^    module Matchers$/;"	m	class:Paperclip.Shoulda
+MockAttachment	test/support/mock_attachment.rb	/^class MockAttachment$/;"	c
+MockInterpolator	test/support/mock_interpolator.rb	/^class MockInterpolator$/;"	c
+MockModel	test/support/mock_model.rb	/^class MockModel$/;"	c
+MockUrlGeneratorBuilder	test/support/mock_url_generator_builder.rb	/^class MockUrlGeneratorBuilder$/;"	c
+NavigationHelpers	features/support/paths.rb	/^module NavigationHelpers$/;"	m
+NotIdentifiedByImageMagickError	lib/paperclip.rb	/^  class NotIdentifiedByImageMagickError < PaperclipError #:nodoc:$/;"	c
+Paperclip	lib/paperclip.rb	/^module Paperclip$/;"	m
+Paperclip	lib/paperclip/attachment.rb	/^module Paperclip$/;"	m
+Paperclip	lib/paperclip/callback_compatibility.rb	/^module Paperclip$/;"	m
+Paperclip	lib/paperclip/geometry.rb	/^module Paperclip$/;"	m
+Paperclip	lib/paperclip/interpolations.rb	/^module Paperclip$/;"	m
+Paperclip	lib/paperclip/matchers.rb	/^module Paperclip$/;"	m
+Paperclip	lib/paperclip/matchers/have_attached_file_matcher.rb	/^module Paperclip$/;"	m
+Paperclip	lib/paperclip/matchers/validate_attachment_content_type_matcher.rb	/^module Paperclip$/;"	m
+Paperclip	lib/paperclip/matchers/validate_attachment_presence_matcher.rb	/^module Paperclip$/;"	m
+Paperclip	lib/paperclip/matchers/validate_attachment_size_matcher.rb	/^module Paperclip$/;"	m
+Paperclip	lib/paperclip/missing_attachment_styles.rb	/^module Paperclip$/;"	m
+Paperclip	lib/paperclip/processor.rb	/^module Paperclip$/;"	m
+Paperclip	lib/paperclip/railtie.rb	/^module Paperclip$/;"	m
+Paperclip	lib/paperclip/storage/filesystem.rb	/^module Paperclip$/;"	m
+Paperclip	lib/paperclip/storage/fog.rb	/^module Paperclip$/;"	m
+Paperclip	lib/paperclip/storage/s3.rb	/^module Paperclip$/;"	m
+Paperclip	lib/paperclip/style.rb	/^module Paperclip$/;"	m
+Paperclip	lib/paperclip/thumbnail.rb	/^module Paperclip$/;"	m
+Paperclip	lib/paperclip/upfile.rb	/^module Paperclip$/;"	m
+Paperclip	lib/paperclip/url_generator.rb	/^module Paperclip$/;"	m
+Paperclip	lib/paperclip/version.rb	/^module Paperclip$/;"	m
+Paperclip	shoulda_macros/paperclip.rb	/^module Paperclip$/;"	m
+Paperclip	test/attachment_test.rb	/^      class Paperclip::Test < Paperclip::Processor; end$/;"	c
+PaperclipError	lib/paperclip.rb	/^  class PaperclipError < StandardError #:nodoc:$/;"	c
+PaperclipGenerator	generators/paperclip/paperclip_generator.rb	/^class PaperclipGenerator < Rails::Generator::NamedBase$/;"	c
+PaperclipGenerator	lib/generators/paperclip/paperclip_generator.rb	/^class PaperclipGenerator < ActiveRecord::Generators::Base$/;"	c
+PaperclipMissingAttachmentStylesTest	test/paperclip_missing_attachment_styles_test.rb	/^class PaperclipMissingAttachmentStylesTest < Test::Unit::TestCase$/;"	c
+PaperclipTest	test/paperclip_test.rb	/^class PaperclipTest < Test::Unit::TestCase$/;"	c
+Processor	lib/paperclip/processor.rb	/^  class Processor$/;"	c	class:Paperclip
+ProcessorTest	test/processor_test.rb	/^class ProcessorTest < Test::Unit::TestCase$/;"	c
+Rails21	lib/paperclip/callback_compatibility.rb	/^    module Rails21$/;"	m	class:Paperclip.CallbackCompatability
+Rails3	lib/paperclip/callback_compatibility.rb	/^    module Rails3$/;"	m	class:Paperclip.CallbackCompatability
+RailsCommandHelpers	features/support/rails.rb	/^module RailsCommandHelpers$/;"	m
+Railtie	lib/paperclip/railtie.rb	/^    class Railtie < Rails::Railtie$/;"	c	class:Paperclip
+Railtie	lib/paperclip/railtie.rb	/^  class Railtie$/;"	c	class:Paperclip
+Running	lib/paperclip/callback_compatibility.rb	/^      module Running$/;"	m	class:Paperclip.CallbackCompatability.Rails21
+Running	lib/paperclip/callback_compatibility.rb	/^      module Running$/;"	m	class:Paperclip.CallbackCompatability.Rails3
+S3	lib/paperclip/storage/s3.rb	/^    module S3$/;"	m	class:Paperclip.Storage
+S3LiveTest	test/storage/s3_live_test.rb	/^  class S3LiveTest < Test::Unit::TestCase$/;"	c
+S3Test	test/storage/s3_test.rb	/^class S3Test < Test::Unit::TestCase$/;"	c
+Shoulda	lib/paperclip/matchers.rb	/^  module Shoulda$/;"	m	class:Paperclip
+Shoulda	lib/paperclip/matchers/have_attached_file_matcher.rb	/^  module Shoulda$/;"	m	class:Paperclip
+Shoulda	lib/paperclip/matchers/validate_attachment_content_type_matcher.rb	/^  module Shoulda$/;"	m	class:Paperclip
+Shoulda	lib/paperclip/matchers/validate_attachment_presence_matcher.rb	/^  module Shoulda$/;"	m	class:Paperclip
+Shoulda	lib/paperclip/matchers/validate_attachment_size_matcher.rb	/^  module Shoulda$/;"	m	class:Paperclip
+Shoulda	shoulda_macros/paperclip.rb	/^  module Shoulda$/;"	m	class:Paperclip
+Storage	lib/paperclip/storage/filesystem.rb	/^  module Storage$/;"	m	class:Paperclip
+Storage	lib/paperclip/storage/fog.rb	/^  module Storage$/;"	m	class:Paperclip
+Storage	lib/paperclip/storage/s3.rb	/^  module Storage$/;"	m	class:Paperclip
+StorageMethodNotFound	lib/paperclip.rb	/^  class StorageMethodNotFound < PaperclipError$/;"	c
+StringIO	lib/paperclip/upfile.rb	/^  class StringIO$/;"	c
+Style	lib/paperclip/style.rb	/^  class Style$/;"	c	class:Paperclip
+StyleTest	test/style_test.rb	/^class StyleTest < Test::Unit::TestCase$/;"	c
+Tempfile	lib/paperclip/iostream.rb	/^  class Tempfile$/;"	c
+Tempfile	lib/paperclip/processor.rb	/^  class Tempfile < ::Tempfile$/;"	c	class:Paperclip
+Test	shoulda_macros/paperclip.rb	/^class Test::Unit::TestCase #:nodoc:$/;"	c
+Test	test/helper.rb	/^class Test::Unit::TestCase$/;"	c
+Thumbnail	lib/paperclip/thumbnail.rb	/^  class Thumbnail < Processor$/;"	c	class:Paperclip
+ThumbnailTest	test/thumbnail_test.rb	/^class ThumbnailTest < Test::Unit::TestCase$/;"	c
+Upfile	lib/paperclip/upfile.rb	/^  module Upfile$/;"	m	class:Paperclip
+UpfileTest	test/upfile_test.rb	/^class UpfileTest < Test::Unit::TestCase$/;"	c
+UrlGenerator	lib/paperclip/url_generator.rb	/^  class UrlGenerator$/;"	c	class:Paperclip
+UrlGeneratorTest	test/url_generator_test.rb	/^class UrlGeneratorTest < Test::Unit::TestCase$/;"	c
+User	features/step_definitions/attachment_steps.rb	/^    class User < ActiveRecord::Base$/;"	c
+ValidateAttachmentContentTypeMatcher	lib/paperclip/matchers/validate_attachment_content_type_matcher.rb	/^      class ValidateAttachmentContentTypeMatcher$/;"	c	class:Paperclip.Shoulda.Matchers
+ValidateAttachmentContentTypeMatcherTest	test/matchers/validate_attachment_content_type_matcher_test.rb	/^class ValidateAttachmentContentTypeMatcherTest < Test::Unit::TestCase$/;"	c
+ValidateAttachmentPresenceMatcher	lib/paperclip/matchers/validate_attachment_presence_matcher.rb	/^      class ValidateAttachmentPresenceMatcher$/;"	c	class:Paperclip.Shoulda.Matchers
+ValidateAttachmentPresenceMatcherTest	test/matchers/validate_attachment_presence_matcher_test.rb	/^class ValidateAttachmentPresenceMatcherTest < Test::Unit::TestCase$/;"	c
+ValidateAttachmentSizeMatcher	lib/paperclip/matchers/validate_attachment_size_matcher.rb	/^      class ValidateAttachmentSizeMatcher$/;"	c	class:Paperclip.Shoulda.Matchers
+ValidateAttachmentSizeMatcherTest	test/matchers/validate_attachment_size_matcher_test.rb	/^class ValidateAttachmentSizeMatcherTest < Test::Unit::TestCase$/;"	c
+WithinHelpers	features/step_definitions/web_steps.rb	/^module WithinHelpers$/;"	m
+[]	lib/paperclip/interpolations.rb	/^    def self.[] name$/;"	F	class:Paperclip.Interpolations
+[]	lib/paperclip/style.rb	/^    def [](key)$/;"	f	class:Paperclip.Style
+[]=	lib/paperclip/interpolations.rb	/^    def self.[]= name, block$/;"	F	class:Paperclip.Interpolations
+[]=	lib/paperclip/style.rb	/^    def []=(key, value)$/;"	f	class:Paperclip.Style
+after_	lib/paperclip/callback_compatibility.rb	/^              def after_#{callback}(*args, &blk)$/;"	f	class:Paperclip.CallbackCompatability.Rails3.Defining.define_paperclip_callbacks
+after_flush_writes	lib/paperclip/attachment.rb	/^    def after_flush_writes$/;"	f	class:Paperclip.queue_existing_for_delete
+all	lib/paperclip/interpolations.rb	/^    def self.all$/;"	F	class:Paperclip.Interpolations
+all	test/attachment_test.rb	/^        def all;   "-all";   end$/;"	f
+allowed_types_allowed?	lib/paperclip/matchers/validate_attachment_content_type_matcher.rb	/^        def allowed_types_allowed?$/;"	f	class:Paperclip.Shoulda
+allowing	lib/paperclip/matchers/validate_attachment_content_type_matcher.rb	/^        def allowing *types$/;"	f	class:Paperclip.Shoulda.Matchers.ValidateAttachmentContentTypeMatcher
+animated?	lib/paperclip/thumbnail.rb	/^    def animated?$/;"	f	class:Paperclip.Thumbnail
+append_to	features/step_definitions/rails_steps.rb	/^  def append_to(path, contents)$/;"	f	class:FileHelpers
+append_to_gemfile	features/step_definitions/rails_steps.rb	/^  def append_to_gemfile(contents)$/;"	f
+aspect	lib/paperclip/geometry.rb	/^    def aspect$/;"	f	class:Paperclip.Geometry
+assign	lib/paperclip/attachment.rb	/^    def assign uploaded_file$/;"	f	class:Paperclip.Attachment
+attachment	lib/paperclip/interpolations.rb	/^    def attachment attachment, style_name$/;"	f
+attachment	test/helper.rb	/^def attachment options$/;"	f
+attachment_definitions	lib/paperclip.rb	/^    def attachment_definitions$/;"	f
+attachment_for	lib/paperclip.rb	/^    def attachment_for name$/;"	f	class:InstanceMethods
+attachment_path	features/step_definitions/attachment_steps.rb	/^  def attachment_path(filename)$/;"	f	class:AttachmentHelpers
+basename	lib/paperclip/interpolations.rb	/^    def basename attachment, style_name$/;"	f	class:Paperclip
+before_	lib/paperclip/callback_compatibility.rb	/^              def before_#{callback}(*args, &blk)$/;"	f	class:Paperclip.CallbackCompatability.Rails3.Defining.define_paperclip_callbacks
+bucket_name	lib/paperclip/storage/s3.rb	/^      def bucket_name$/;"	f	class:Paperclip.Storage.S3
+check_for_url_clash	lib/paperclip.rb	/^    def check_for_url_clash(name,url,klass)$/;"	f	class:Paperclip
+class	lib/paperclip/interpolations.rb	/^    def class attachment = nil, style_name = nil$/;"	f	class:Paperclip
+class_for	lib/paperclip.rb	/^    def class_for(class_name)$/;"	f	class:Paperclip
+clear	lib/paperclip/attachment.rb	/^    def clear$/;"	f	class:Paperclip.Attachment
+clear_processors!	lib/paperclip.rb	/^    def clear_processors!$/;"	f	class:Paperclip
+comment_out_gem_in_gemfile	features/step_definitions/rails_steps.rb	/^  def comment_out_gem_in_gemfile(gemname)$/;"	f
+configure	lib/paperclip.rb	/^    def configure$/;"	f	class:Paperclip
+connection	lib/paperclip/storage/fog.rb	/^      def connection$/;"	f	class:Paperclip.Storage.Fog.flush_writes.flush_deletes
+content_type	lib/paperclip/attachment.rb	/^    def content_type$/;"	f	class:Paperclip.Attachment
+content_type	lib/paperclip/upfile.rb	/^    def content_type$/;"	f	class:Paperclip.Upfile
+content_type	lib/paperclip/upfile.rb	/^    def content_type$/;"	f	class:StringIO
+content_type_extension	lib/paperclip/interpolations.rb	/^    def content_type_extension attachment, style_name$/;"	f	class:Paperclip
+convert_options	lib/paperclip/style.rb	/^    def convert_options$/;"	f	class:Paperclip.Style
+convert_options?	lib/paperclip/thumbnail.rb	/^    def convert_options?$/;"	f	class:Paperclip.Thumbnail
+counter	test/storage/s3_test.rb	/^        def counter$/;"	f
+create_bucket	lib/paperclip/storage/s3.rb	/^      def create_bucket$/;"	f	class:Paperclip.Storage.S3
+crop?	lib/paperclip/thumbnail.rb	/^    def crop?$/;"	f	class:Paperclip.Thumbnail
+cropping	lib/paperclip/geometry.rb	/^    def cropping dst, ratio, scale$/;"	f	class:Paperclip.Geometry
+current_attachments_styles	lib/paperclip/missing_attachment_styles.rb	/^  def self.current_attachments_styles$/;"	F
+default_options	lib/paperclip/attachment.rb	/^    def self.default_options$/;"	F	class:Paperclip.Attachment
+default_style	lib/paperclip/attachment.rb	/^    def default_style$/;"	f	class:Paperclip.Attachment
+default_url	lib/paperclip/url_generator.rb	/^    def default_url$/;"	f	class:Paperclip.UrlGenerator
+define_paperclip_callbacks	lib/paperclip/callback_compatibility.rb	/^        def define_paperclip_callbacks(*args)$/;"	f	class:Paperclip.CallbackCompatability.Rails21.Defining
+define_paperclip_callbacks	lib/paperclip/callback_compatibility.rb	/^        def define_paperclip_callbacks(*callbacks)$/;"	f	class:Paperclip.CallbackCompatability.Rails3.Defining
+description	lib/paperclip/matchers/have_attached_file_matcher.rb	/^        def description$/;"	f	class:Paperclip.Shoulda.Matchers.HaveAttachedFileMatcher
+description	lib/paperclip/matchers/validate_attachment_content_type_matcher.rb	/^        def description$/;"	f	class:Paperclip.Shoulda
+description	lib/paperclip/matchers/validate_attachment_presence_matcher.rb	/^        def description$/;"	f	class:Paperclip.Shoulda.Matchers.ValidateAttachmentPresenceMatcher
+description	lib/paperclip/matchers/validate_attachment_size_matcher.rb	/^        def description$/;"	f	class:Paperclip.Shoulda.Matchers.ValidateAttachmentSizeMatcher
+destroy	lib/paperclip/attachment.rb	/^    def destroy$/;"	f	class:Paperclip.Attachment
+destroy_attached_files	lib/paperclip.rb	/^    def destroy_attached_files$/;"	f	class:InstanceMethods
+directory	lib/paperclip/storage/fog.rb	/^      def directory$/;"	f	class:Paperclip.Storage.Fog.flush_writes.flush_deletes
+dirty?	lib/paperclip/attachment.rb	/^    def dirty?$/;"	f	class:Paperclip.Attachment
+do_after_all	test/attachment_test.rb	/^        def do_after_all; end$/;"	f
+do_after_avatar	test/attachment_test.rb	/^        def do_after_avatar; end$/;"	f
+do_before_all	test/attachment_test.rb	/^        def do_before_all; end$/;"	f
+do_before_avatar	test/attachment_test.rb	/^        def do_before_avatar; end$/;"	f
+each_attachment	lib/paperclip.rb	/^    def each_attachment$/;"	f	class:InstanceMethods
+each_instance_with_attachment	lib/paperclip.rb	/^    def each_instance_with_attachment(klass, name)$/;"	f	class:Paperclip
+ensure_required_accessors!	lib/paperclip/attachment.rb	/^    def ensure_required_accessors! #:nodoc:$/;"	f	class:Paperclip.Attachment
+error_when_not_valid?	lib/paperclip/matchers/validate_attachment_presence_matcher.rb	/^        def error_when_not_valid?$/;"	f	class:Paperclip.Shoulda.Matchers.ValidateAttachmentPresenceMatcher
+errors	lib/paperclip/attachment.rb	/^    def errors$/;"	f	class:Paperclip.Attachment
+errors	test/helper.rb	/^  def errors$/;"	f	class:FakeModel
+escape	test/url_generator_test.rb	/^      def escape$/;"	f
+escape_url	lib/paperclip/url_generator.rb	/^    def escape_url(url)$/;"	f	class:Paperclip.UrlGenerator
+escape_url_as_needed	lib/paperclip/url_generator.rb	/^    def escape_url_as_needed(url, options)$/;"	f	class:Paperclip.UrlGenerator
+establish_connection!	lib/paperclip/storage/s3.rb	/^      def establish_connection!$/;"	f	class:Paperclip.Storage.S3
+exists?	lib/paperclip/storage/filesystem.rb	/^      def exists?(style_name = default_style)$/;"	f	class:Paperclip.Storage.Filesystem
+exists?	lib/paperclip/storage/fog.rb	/^      def exists?(style = default_style)$/;"	f	class:Paperclip.Storage.Fog
+exists?	lib/paperclip/storage/s3.rb	/^      def exists?(style = default_style)$/;"	f	class:Paperclip.Storage.S3
+expiring_url	lib/paperclip/storage/s3.rb	/^      def expiring_url(time = 3600, style_name = default_style)$/;"	f	class:Paperclip.Storage.S3
+extended	lib/paperclip/storage/filesystem.rb	/^      def self.extended base$/;"	F	class:Paperclip.Storage.Filesystem
+extended	lib/paperclip/storage/fog.rb	/^      def self.extended base$/;"	F	class:Paperclip.Storage.Fog
+extended	lib/paperclip/storage/s3.rb	/^      def self.extended base$/;"	F	class:Paperclip.Storage.S3
+extension	lib/paperclip/interpolations.rb	/^    def extension attachment, style_name$/;"	f	class:Paperclip
+extra_options_for	lib/paperclip/attachment.rb	/^    def extra_options_for(style) #:nodoc:$/;"	f	class:Paperclip.Attachment
+extra_source_file_options_for	lib/paperclip/attachment.rb	/^    def extra_source_file_options_for(style) #:nodoc:$/;"	f	class:Paperclip.Attachment
+failure_message	lib/paperclip/matchers/have_attached_file_matcher.rb	/^        def failure_message$/;"	f	class:Paperclip.Shoulda.Matchers.HaveAttachedFileMatcher
+failure_message	lib/paperclip/matchers/validate_attachment_content_type_matcher.rb	/^        def failure_message$/;"	f	class:Paperclip.Shoulda.Matchers.ValidateAttachmentContentTypeMatcher
+failure_message	lib/paperclip/matchers/validate_attachment_presence_matcher.rb	/^        def failure_message$/;"	f	class:Paperclip.Shoulda.Matchers.ValidateAttachmentPresenceMatcher
+failure_message	lib/paperclip/matchers/validate_attachment_size_matcher.rb	/^        def failure_message$/;"	f	class:Paperclip.Shoulda.Matchers.ValidateAttachmentSizeMatcher
+file?	lib/paperclip/attachment.rb	/^    def file?$/;"	f	class:Paperclip.Attachment
+filename	lib/paperclip/interpolations.rb	/^    def filename attachment, style_name$/;"	f	class:Paperclip
+find_credentials	lib/paperclip/storage/fog.rb	/^      def find_credentials(creds)$/;"	f	class:Paperclip.Storage.Fog.flush_writes.flush_deletes
+find_credentials	lib/paperclip/storage/s3.rb	/^      def find_credentials creds$/;"	f	class:Paperclip.Storage.S3
+fingerprint	lib/paperclip/attachment.rb	/^    def fingerprint$/;"	f	class:Paperclip.Attachment
+fingerprint	lib/paperclip/interpolations.rb	/^    def fingerprint attachment, style_name$/;"	f
+fingerprint	lib/paperclip/upfile.rb	/^    def fingerprint$/;"	f	class:StringIO
+fixture_file	test/helper.rb	/^def fixture_file(filename)$/;"	f
+fixture_path	features/step_definitions/attachment_steps.rb	/^  def fixture_path(filename)$/;"	f	class:AttachmentHelpers
+flush_deletes	lib/paperclip/storage/filesystem.rb	/^      def flush_deletes #:nodoc:$/;"	f	class:Paperclip.Storage.Filesystem
+flush_deletes	lib/paperclip/storage/fog.rb	/^      def flush_deletes$/;"	f	class:Paperclip.Storage.Fog.flush_writes
+flush_deletes	lib/paperclip/storage/s3.rb	/^      def flush_deletes #:nodoc:$/;"	f	class:Paperclip.Storage.S3
+flush_errors	lib/paperclip/attachment.rb	/^    def flush_errors #:nodoc:$/;"	f	class:Paperclip.queue_existing_for_delete
+flush_writes	lib/paperclip/storage/filesystem.rb	/^      def flush_writes #:nodoc:$/;"	f	class:Paperclip.Storage.Filesystem
+flush_writes	lib/paperclip/storage/fog.rb	/^      def flush_writes$/;"	f	class:Paperclip.Storage.Fog
+flush_writes	lib/paperclip/storage/s3.rb	/^      def flush_writes #:nodoc:$/;"	f	class:Paperclip.Storage.S3
+fog_credentials	lib/paperclip/storage/fog.rb	/^      def fog_credentials$/;"	f	class:Paperclip.Storage.Fog
+fog_file	lib/paperclip/storage/fog.rb	/^      def fog_file$/;"	f	class:Paperclip.Storage.Fog
+fog_public	lib/paperclip/storage/fog.rb	/^      def fog_public$/;"	f	class:Paperclip.Storage.Fog
+for	lib/paperclip/url_generator.rb	/^    def for(style_name, options)$/;"	f	class:Paperclip.UrlGenerator
+for	test/support/mock_url_generator_builder.rb	/^  def for(style_name, options)$/;"	f	class:MockUrlGeneratorBuilder
+framework_version	features/support/rails.rb	/^  def framework_version$/;"	f	class:RailsCommandHelpers
+framework_version?	features/support/rails.rb	/^  def framework_version?(version_string)$/;"	f	class:RailsCommandHelpers
+from_file	lib/paperclip/geometry.rb	/^    def self.from_file file$/;"	F	class:Paperclip.Geometry
+from_file	test/thumbnail_test.rb	/^          def self.from_file(file)$/;"	F
+generate_file_name	generators/paperclip/paperclip_generator.rb	/^  def generate_file_name$/;"	f	class:PaperclipGenerator
+generate_fingerprint	lib/paperclip/attachment.rb	/^    def generate_fingerprint(source)$/;"	f	class:Paperclip.Attachment
+generate_migration	lib/generators/paperclip/paperclip_generator.rb	/^  def generate_migration$/;"	f	class:PaperclipGenerator
+generator_command	features/support/rails.rb	/^  def generator_command$/;"	f	class:RailsCommandHelpers
+geometry	lib/paperclip/style.rb	/^    def geometry$/;"	f	class:Paperclip.Style
+get_registered_attachments_styles	lib/paperclip/missing_attachment_styles.rb	/^  def self.get_registered_attachments_styles$/;"	F
+greater_than	lib/paperclip/matchers/validate_attachment_size_matcher.rb	/^        def greater_than size$/;"	f	class:Paperclip.Shoulda.Matchers.ValidateAttachmentSizeMatcher
+has_attached_file	lib/paperclip.rb	/^    def has_attached_file name, options = {}$/;"	f	class:ClassMethods
+has_column?	lib/paperclip/matchers/have_attached_file_matcher.rb	/^        def has_column?$/;"	f	class:Paperclip.Shoulda.Matchers.HaveAttachedFileMatcher
+has_generated_url_with_options?	test/support/mock_url_generator_builder.rb	/^  def has_generated_url_with_options?(options)$/;"	f	class:MockUrlGeneratorBuilder
+has_generated_url_with_style_name?	test/support/mock_url_generator_builder.rb	/^  def has_generated_url_with_style_name?(style_name)$/;"	f	class:MockUrlGeneratorBuilder
+has_interpolated_attachment?	test/support/mock_interpolator.rb	/^  def has_interpolated_attachment?(attachment)$/;"	f	class:MockInterpolator
+has_interpolated_pattern?	test/support/mock_interpolator.rb	/^  def has_interpolated_pattern?(pattern)$/;"	f	class:MockInterpolator
+has_interpolated_style_name?	test/support/mock_interpolator.rb	/^  def has_interpolated_style_name?(style_name)$/;"	f	class:MockInterpolator
+hash	lib/paperclip/attachment.rb	/^    def hash(style_name = default_style)$/;"	f	class:Paperclip.Attachment
+hash	lib/paperclip/interpolations.rb	/^    def hash attachment=nil, style_name=nil$/;"	f
+have_attached_file	lib/paperclip/matchers/have_attached_file_matcher.rb	/^      def have_attached_file name$/;"	f	class:Paperclip.Shoulda.Matchers
+higher_than_high?	lib/paperclip/matchers/validate_attachment_size_matcher.rb	/^        def higher_than_high?$/;"	f	class:Paperclip.Shoulda.Matchers.ValidateAttachmentSizeMatcher
+higher_than_low?	lib/paperclip/matchers/validate_attachment_size_matcher.rb	/^        def higher_than_low?$/;"	f	class:Paperclip.Shoulda.Matchers.ValidateAttachmentSizeMatcher
+horizontal?	lib/paperclip/geometry.rb	/^    def horizontal?$/;"	f	class:Paperclip.Geometry
+http_proxy_host	lib/paperclip/storage/s3.rb	/^      def http_proxy_host$/;"	f	class:Paperclip.Storage.S3
+http_proxy_password	lib/paperclip/storage/s3.rb	/^      def http_proxy_password$/;"	f	class:Paperclip.Storage.S3
+http_proxy_port	lib/paperclip/storage/s3.rb	/^      def http_proxy_port$/;"	f	class:Paperclip.Storage.S3
+http_proxy_user	lib/paperclip/storage/s3.rb	/^      def http_proxy_user$/;"	f	class:Paperclip.Storage.S3
+id	lib/paperclip/interpolations.rb	/^    def id attachment, style_name$/;"	f
+id_partition	lib/paperclip/interpolations.rb	/^    def id_partition attachment, style_name$/;"	f
+in	lib/paperclip/matchers/validate_attachment_size_matcher.rb	/^        def in range$/;"	f	class:Paperclip.Shoulda.Matchers.ValidateAttachmentSizeMatcher
+included	lib/paperclip.rb	/^    def self.included base #:nodoc:$/;"	F	class:Glue
+included	lib/paperclip/callback_compatibility.rb	/^      def self.included(base)$/;"	F	class:Paperclip.CallbackCompatability.Rails21
+included	lib/paperclip/callback_compatibility.rb	/^      def self.included(base)$/;"	F	class:Paperclip.CallbackCompatability.Rails3
+included?	lib/paperclip/matchers/have_attached_file_matcher.rb	/^        def included?$/;"	f	class:Paperclip.Shoulda.Matchers.HaveAttachedFileMatcher
+initialize	generators/paperclip/paperclip_generator.rb	/^  def initialize(args, options = {})$/;"	f	class:PaperclipGenerator
+initialize	lib/paperclip/attachment.rb	/^    def initialize(name, instance, options = {})$/;"	f	class:Paperclip.Attachment
+initialize	lib/paperclip/geometry.rb	/^    def initialize width = nil, height = nil, modifier = nil$/;"	f	class:Paperclip.Geometry
+initialize	lib/paperclip/matchers/have_attached_file_matcher.rb	/^        def initialize attachment_name$/;"	f	class:Paperclip.Shoulda.Matchers.HaveAttachedFileMatcher
+initialize	lib/paperclip/matchers/validate_attachment_content_type_matcher.rb	/^        def initialize attachment_name$/;"	f	class:Paperclip.Shoulda.Matchers.ValidateAttachmentContentTypeMatcher
+initialize	lib/paperclip/matchers/validate_attachment_presence_matcher.rb	/^        def initialize attachment_name$/;"	f	class:Paperclip.Shoulda.Matchers.ValidateAttachmentPresenceMatcher
+initialize	lib/paperclip/matchers/validate_attachment_size_matcher.rb	/^        def initialize attachment_name$/;"	f	class:Paperclip.Shoulda.Matchers.ValidateAttachmentSizeMatcher
+initialize	lib/paperclip/processor.rb	/^    def initialize file, options = {}, attachment = nil$/;"	f	class:Paperclip.Processor
+initialize	lib/paperclip/style.rb	/^    def initialize name, definition, attachment$/;"	f	class:Paperclip.Style
+initialize	lib/paperclip/thumbnail.rb	/^    def initialize(file, options = {}, attachment = nil)$/;"	f	class:Paperclip.Thumbnail
+initialize	lib/paperclip/url_generator.rb	/^    def initialize(attachment, attachment_options)$/;"	f	class:Paperclip.UrlGenerator
+initialize	test/support/mock_attachment.rb	/^  def initialize(options = {})$/;"	f	class:MockAttachment
+initialize	test/support/mock_interpolator.rb	/^  def initialize(options = {})$/;"	f	class:MockInterpolator
+initialize_storage	lib/paperclip/attachment.rb	/^    def initialize_storage #:nodoc:$/;"	f	class:Paperclip.Attachment
+initializer	test/support/mock_url_generator_builder.rb	/^  def initializer$/;"	f	class:MockUrlGeneratorBuilder
+insert	lib/paperclip/railtie.rb	/^    def self.insert$/;"	F	class:Paperclip.Railtie
+inspect	lib/paperclip/geometry.rb	/^    def inspect$/;"	f	class:Paperclip.Geometry
+instance	test/support/mock_attachment.rb	/^  def instance$/;"	f	class:MockAttachment
+instance_read	lib/paperclip/attachment.rb	/^    def instance_read(attr)$/;"	f	class:Paperclip.Attachment
+instance_write	lib/paperclip/attachment.rb	/^    def instance_write(attr, value)$/;"	f	class:Paperclip.Attachment
+interpolate	lib/paperclip/attachment.rb	/^    def interpolate(pattern, style_name = default_style) #:nodoc:$/;"	f	class:Paperclip
+interpolate	lib/paperclip/interpolations.rb	/^    def self.interpolate pattern, *args$/;"	F	class:Paperclip.Interpolations
+interpolate	test/support/mock_interpolator.rb	/^  def interpolate(pattern, attachment, style_name)$/;"	f	class:MockInterpolator
+interpolates	lib/paperclip.rb	/^    def interpolates key, &block$/;"	f	class:Paperclip
+interpolations	lib/paperclip/attachment.rb	/^    def self.interpolations$/;"	F	class:Paperclip.Attachment
+iterate_over_array_to_find_best_option	lib/paperclip/upfile.rb	/^    def iterate_over_array_to_find_best_option(types)$/;"	f	class:Paperclip.Upfile
+larger	lib/paperclip/geometry.rb	/^    def larger$/;"	f	class:Paperclip.Geometry
+less_than	lib/paperclip/matchers/validate_attachment_size_matcher.rb	/^        def less_than size$/;"	f	class:Paperclip.Shoulda.Matchers.ValidateAttachmentSizeMatcher
+load_processor	lib/paperclip.rb	/^    def load_processor(name)$/;"	f	class:Paperclip
+log	lib/paperclip.rb	/^    def log message$/;"	f	class:Paperclip
+log	lib/paperclip/attachment.rb	/^    def log message #:nodoc:$/;"	f	class:Paperclip.Attachment
+logger	lib/paperclip.rb	/^    def logger #:nodoc:$/;"	f	class:Paperclip
+logger=	lib/paperclip.rb	/^    def logger=(logger)$/;"	f	class:Paperclip
+logging?	lib/paperclip.rb	/^    def logging? #:nodoc:$/;"	f	class:Paperclip
+lower_than_high?	lib/paperclip/matchers/validate_attachment_size_matcher.rb	/^        def lower_than_high?$/;"	f	class:Paperclip.Shoulda.Matchers.ValidateAttachmentSizeMatcher
+lower_than_low?	lib/paperclip/matchers/validate_attachment_size_matcher.rb	/^        def lower_than_low?$/;"	f	class:Paperclip.Shoulda.Matchers.ValidateAttachmentSizeMatcher
+make	lib/paperclip/processor.rb	/^    def make$/;"	f	class:Paperclip.Processor
+make	lib/paperclip/processor.rb	/^    def self.make file, options = {}, attachment = nil$/;"	F	class:Paperclip.Processor
+make	lib/paperclip/thumbnail.rb	/^    def make$/;"	f	class:Paperclip.Thumbnail
+make	test/paperclip_test.rb	/^        def make(file, options = {}, attachment = nil)$/;"	f
+make_tmpname	lib/paperclip/processor.rb	/^      def make_tmpname(basename, n)$/;"	f	class:Paperclip.Tempfile
+manifest	generators/paperclip/paperclip_generator.rb	/^  def manifest$/;"	f	class:PaperclipGenerator
+matches?	lib/paperclip/matchers/have_attached_file_matcher.rb	/^        def matches? subject$/;"	f	class:Paperclip.Shoulda.Matchers.HaveAttachedFileMatcher
+matches?	lib/paperclip/matchers/validate_attachment_content_type_matcher.rb	/^        def matches? subject$/;"	f	class:Paperclip.Shoulda.Matchers.ValidateAttachmentContentTypeMatcher
+matches?	lib/paperclip/matchers/validate_attachment_presence_matcher.rb	/^        def matches? subject$/;"	f	class:Paperclip.Shoulda.Matchers.ValidateAttachmentPresenceMatcher
+matches?	lib/paperclip/matchers/validate_attachment_size_matcher.rb	/^        def matches? subject$/;"	f	class:Paperclip.Shoulda.Matchers.ValidateAttachmentSizeMatcher
+migration_class_name	lib/generators/paperclip/paperclip_generator.rb	/^  def migration_class_name$/;"	f	class:PaperclipGenerator
+migration_file_name	lib/generators/paperclip/paperclip_generator.rb	/^  def migration_file_name$/;"	f	class:PaperclipGenerator
+migration_name	lib/generators/paperclip/paperclip_generator.rb	/^  def migration_name$/;"	f	class:PaperclipGenerator
+missing_attachments_styles	lib/paperclip/missing_attachment_styles.rb	/^  def self.missing_attachments_styles$/;"	F
+modify_table	test/helper.rb	/^def modify_table table_name, &block$/;"	f
+most_appropriate_url	lib/paperclip/url_generator.rb	/^    def most_appropriate_url$/;"	f	class:Paperclip.UrlGenerator
+negative_failure_message	lib/paperclip/matchers/have_attached_file_matcher.rb	/^        def negative_failure_message$/;"	f	class:Paperclip.Shoulda.Matchers.HaveAttachedFileMatcher
+negative_failure_message	lib/paperclip/matchers/validate_attachment_content_type_matcher.rb	/^        def negative_failure_message$/;"	f	class:Paperclip.Shoulda.Matchers
+negative_failure_message	lib/paperclip/matchers/validate_attachment_presence_matcher.rb	/^        def negative_failure_message$/;"	f	class:Paperclip.Shoulda.Matchers.ValidateAttachmentPresenceMatcher
+negative_failure_message	lib/paperclip/matchers/validate_attachment_size_matcher.rb	/^        def negative_failure_message$/;"	f	class:Paperclip.Shoulda.Matchers.ValidateAttachmentSizeMatcher
+new	test/support/mock_url_generator_builder.rb	/^  def new(attachment, attachment_options)$/;"	f	class:MockUrlGeneratorBuilder
+new_application_command	features/support/rails.rb	/^  def new_application_command$/;"	f	class:RailsCommandHelpers
+no_error_when_valid?	lib/paperclip/matchers/validate_attachment_presence_matcher.rb	/^        def no_error_when_valid?$/;"	f	class:Paperclip.Shoulda.Matchers.ValidateAttachmentPresenceMatcher
+options	lib/paperclip.rb	/^    def options$/;"	f	class:Paperclip
+original_filename	lib/paperclip/attachment.rb	/^    def original_filename$/;"	f	class:Paperclip.Attachment
+original_filename	lib/paperclip/upfile.rb	/^    def original_filename$/;"	f	class:Paperclip.Upfile
+original_filename	lib/paperclip/upfile.rb	/^    def original_filename$/;"	f	class:StringIO
+override_method	lib/paperclip/matchers/validate_attachment_size_matcher.rb	/^        def override_method object, method, &replacement$/;"	f	class:Paperclip.Shoulda.Matchers.ValidateAttachmentSizeMatcher
+paperclip_fixture	shoulda_macros/paperclip.rb	/^    def paperclip_fixture(model, attachment, extension)$/;"	f	class:Paperclip.Shoulda
+param	lib/paperclip/interpolations.rb	/^    def param attachment, style_name$/;"	f
+parse	lib/paperclip/geometry.rb	/^    def self.parse string$/;"	F	class:Paperclip.Geometry
+parse	test/thumbnail_test.rb	/^          def self.parse(s)$/;"	F
+parse_credentials	lib/paperclip/storage/fog.rb	/^      def parse_credentials(creds)$/;"	f	class:Paperclip.Storage.Fog.flush_writes.flush_deletes
+parse_credentials	lib/paperclip/storage/s3.rb	/^      def parse_credentials creds$/;"	f	class:Paperclip.Storage.S3
+passes_validation_with_size	lib/paperclip/matchers/validate_attachment_size_matcher.rb	/^        def passes_validation_with_size(new_size)$/;"	f	class:Paperclip.Shoulda.Matchers.ValidateAttachmentSizeMatcher
+path	lib/paperclip/attachment.rb	/^    def path(style_name = default_style)$/;"	f	class:Paperclip.Attachment
+path_option	lib/paperclip/attachment.rb	/^    def path_option$/;"	f	class:Paperclip.Attachment
+path_to	features/support/paths.rb	/^  def path_to(page_name)$/;"	f	class:NavigationHelpers
+post_process	lib/paperclip/attachment.rb	/^    def post_process(*style_args) #:nodoc:$/;"	f	class:Paperclip.Attachment
+post_process_styles	lib/paperclip/attachment.rb	/^    def post_process_styles(*style_args) #:nodoc:$/;"	f	class:Paperclip
+prepare_for_destroy	lib/paperclip.rb	/^    def prepare_for_destroy$/;"	f	class:InstanceMethods
+processor	lib/paperclip.rb	/^    def processor(name) #:nodoc:$/;"	f	class:Paperclip
+processor_options	lib/paperclip/style.rb	/^    def processor_options$/;"	f	class:Paperclip.Style
+processors	lib/paperclip/attachment.rb	/^    def processors$/;"	f	class:Paperclip.Attachment
+processors	lib/paperclip/style.rb	/^    def processors$/;"	f	class:Paperclip.Style
+public_url	lib/paperclip/storage/fog.rb	/^      def public_url(style = default_style)$/;"	f	class:Paperclip.Storage.Fog.flush_writes.flush_deletes
+queue_existing_for_delete	lib/paperclip/attachment.rb	/^    def queue_existing_for_delete #:nodoc:$/;"	f	class:Paperclip
+rails_env	lib/paperclip/interpolations.rb	/^    def rails_env attachment, style_name$/;"	f	class:Paperclip
+rails_env	test/storage/s3_test.rb	/^  def rails_env(env)$/;"	f	class:S3Test
+rails_root	lib/paperclip/interpolations.rb	/^    def rails_root attachment, style_name$/;"	f	class:Paperclip
+rebuild_class	test/helper.rb	/^def rebuild_class options = {}$/;"	f
+rebuild_model	test/helper.rb	/^def rebuild_model options = {}$/;"	f
+register_processor	lib/paperclip.rb	/^    def register_processor(name, processor)$/;"	f	class:Paperclip
+registered_attachments_styles_path	lib/paperclip/missing_attachment_styles.rb	/^    def registered_attachments_styles_path$/;"	f	class:Paperclip
+rejected_types_rejected?	lib/paperclip/matchers/validate_attachment_content_type_matcher.rb	/^        def rejected_types_rejected?$/;"	f	class:Paperclip.Shoulda
+rejecting	lib/paperclip/matchers/validate_attachment_content_type_matcher.rb	/^        def rejecting *types$/;"	f	class:Paperclip.Shoulda.Matchers.ValidateAttachmentContentTypeMatcher
+reprocess!	lib/paperclip/attachment.rb	/^    def reprocess!(*style_args)$/;"	f	class:Paperclip.Attachment
+reset_class	test/helper.rb	/^def reset_class class_name$/;"	f
+reset_duplicate_clash_check!	lib/paperclip.rb	/^    def reset_duplicate_clash_check!$/;"	f	class:Paperclip
+reset_table	test/helper.rb	/^def reset_table table_name, &block$/;"	f
+respond_to?	test/support/mock_attachment.rb	/^  def respond_to?(meth)$/;"	f	class:MockAttachment
+responds?	lib/paperclip/matchers/have_attached_file_matcher.rb	/^        def responds?$/;"	f	class:Paperclip.Shoulda.Matchers.HaveAttachedFileMatcher
+run	lib/paperclip.rb	/^    def run(cmd, arguments = "", local_options = {})$/;"	f	class:Paperclip
+run_paperclip_callbacks	lib/paperclip/callback_compatibility.rb	/^        def run_paperclip_callbacks(callback, opts = nil, &blk)$/;"	f	class:Paperclip.CallbackCompatability.Rails21.Running
+run_paperclip_callbacks	lib/paperclip/callback_compatibility.rb	/^        def run_paperclip_callbacks(callback, opts = nil, &block)$/;"	f	class:Paperclip.CallbackCompatability.Rails3.Running
+run_paperclip_callbacks	test/helper.rb	/^  def run_paperclip_callbacks name, *args$/;"	f	class:FakeModel
+runner_command	features/support/rails.rb	/^  def runner_command$/;"	f	class:RailsCommandHelpers
+s3_bucket	lib/paperclip/storage/s3.rb	/^      def s3_bucket$/;"	f	class:Paperclip.Storage.S3
+s3_credentials	lib/paperclip/storage/s3.rb	/^      def s3_credentials$/;"	f	class:Paperclip.Storage.S3
+s3_files_for	test/integration_test.rb	/^    def s3_files_for attachment$/;"	f
+s3_headers_for	test/integration_test.rb	/^    def s3_headers_for attachment, style$/;"	f
+s3_host_alias	lib/paperclip/storage/s3.rb	/^      def s3_host_alias$/;"	f	class:Paperclip.Storage.S3
+s3_host_name	lib/paperclip/storage/s3.rb	/^      def s3_host_name$/;"	f	class:Paperclip.Storage.S3
+s3_object	lib/paperclip/storage/s3.rb	/^      def s3_object$/;"	f	class:Paperclip.Storage.S3
+s3_permissions	lib/paperclip/storage/s3.rb	/^      def s3_permissions(style = default_style)$/;"	f	class:Paperclip.Storage.S3
+s3_protocol	lib/paperclip/storage/s3.rb	/^      def s3_protocol(style = default_style)$/;"	f	class:Paperclip.Storage.S3
+save	lib/paperclip/attachment.rb	/^    def save$/;"	f	class:Paperclip.Attachment
+save_attached_files	lib/paperclip.rb	/^    def save_attached_files$/;"	f	class:InstanceMethods
+save_current_attachments_styles	lib/paperclip/missing_attachment_styles.rb	/^  def self.save_current_attachments_styles!$/;"	F
+scaling	lib/paperclip/geometry.rb	/^    def scaling dst, ratio$/;"	f	class:Paperclip.Geometry
+selector_for	features/support/selectors.rb	/^  def selector_for(locator)$/;"	f	class:HtmlSelectorsHelpers
+set_permissions	lib/paperclip/storage/s3.rb	/^      def set_permissions permissions$/;"	f	class:Paperclip.Storage.S3
+setup	test/helper.rb	/^  def setup$/;"	f	class:Test
+should_accept_dummy_class	test/helper.rb	/^def should_accept_dummy_class$/;"	f
+should_have_attached_file	shoulda_macros/paperclip.rb	/^    def should_have_attached_file name$/;"	f	class:Paperclip.Shoulda
+should_reject_dummy_class	test/helper.rb	/^def should_reject_dummy_class$/;"	f
+should_validate	test/paperclip_test.rb	/^    def self.should_validate validation, options, valid_file, invalid_file$/;"	F
+should_validate_attachment_content_type	shoulda_macros/paperclip.rb	/^    def should_validate_attachment_content_type name, options = {}$/;"	f	class:Paperclip.Shoulda
+should_validate_attachment_presence	shoulda_macros/paperclip.rb	/^    def should_validate_attachment_presence name$/;"	f	class:Paperclip.Shoulda
+should_validate_attachment_size	shoulda_macros/paperclip.rb	/^    def should_validate_attachment_size name, options = {}$/;"	f	class:Paperclip.Shoulda
+silence_warnings	test/helper.rb	/^def silence_warnings$/;"	f
+size	lib/paperclip/attachment.rb	/^    def size$/;"	f	class:Paperclip.Attachment
+size	lib/paperclip/iostream.rb	/^    def size$/;"	f	class:Tempfile
+size	lib/paperclip/upfile.rb	/^    def size$/;"	f	class:Paperclip.Upfile
+smaller	lib/paperclip/geometry.rb	/^    def smaller$/;"	f	class:Paperclip.Geometry
+source_file_options	lib/paperclip/style.rb	/^    def source_file_options$/;"	f	class:Paperclip.Style
+source_root	lib/generators/paperclip/paperclip_generator.rb	/^  def self.source_root$/;"	F	class:PaperclipGenerator
+square?	lib/paperclip/geometry.rb	/^    def square?$/;"	f	class:Paperclip.Geometry
+stream_to	lib/paperclip/iostream.rb	/^  def stream_to object, path_or_file, in_blocks_of = 8192$/;"	f	class:IOStream
+stub_paperclip_s3	shoulda_macros/paperclip.rb	/^    def stub_paperclip_s3(model, attachment, extension)$/;"	f	class:Paperclip.Shoulda
+style	lib/paperclip/interpolations.rb	/^    def style attachment, style_name$/;"	f
+styles	lib/paperclip/attachment.rb	/^    def styles$/;"	f	class:Paperclip.Attachment
+thumb	test/attachment_test.rb	/^        def thumb; "-thumb"; end$/;"	f	class:all
+time_zone	lib/paperclip/attachment.rb	/^    def time_zone$/;"	f	class:Paperclip.Attachment
+timestamp	lib/paperclip/interpolations.rb	/^    def timestamp attachment, style_name$/;"	f	class:Paperclip
+timestamp_as_needed	lib/paperclip/url_generator.rb	/^    def timestamp_as_needed(url, options)$/;"	f	class:Paperclip.UrlGenerator
+timestamp_possible?	lib/paperclip/url_generator.rb	/^    def timestamp_possible?$/;"	f	class:Paperclip.UrlGenerator
+to_file	lib/paperclip/storage/filesystem.rb	/^      def to_file style_name = default_style$/;"	f	class:Paperclip.Storage.Filesystem
+to_file	lib/paperclip/storage/fog.rb	/^      def to_file(style = default_style)$/;"	f	class:Paperclip.Storage.Fog.flush_writes.flush_deletes
+to_file	lib/paperclip/storage/s3.rb	/^      def to_file style = default_style$/;"	f	class:Paperclip.Storage.S3
+to_s	lib/paperclip/attachment.rb	/^    def to_s style_name = default_style$/;"	f	class:Paperclip.Attachment
+to_s	lib/paperclip/geometry.rb	/^    def to_s$/;"	f	class:Paperclip.Geometry
+to_s	test/thumbnail_test.rb	/^          def to_s$/;"	f
+to_tempfile	lib/paperclip/iostream.rb	/^  def to_tempfile(object)$/;"	f	class:IOStream
+transformation_command	lib/paperclip/thumbnail.rb	/^    def transformation_command$/;"	f	class:Paperclip.Thumbnail
+transformation_to	lib/paperclip/geometry.rb	/^    def transformation_to dst, crop = false$/;"	f	class:Paperclip.Geometry
+transformation_to	test/thumbnail_test.rb	/^          def transformation_to(target, should_crop)$/;"	f
+type_allowed?	lib/paperclip/matchers/validate_attachment_content_type_matcher.rb	/^        def type_allowed?(type)$/;"	f	class:Paperclip.Shoulda
+type_from_file_command	lib/paperclip/upfile.rb	/^    def type_from_file_command$/;"	f	class:Paperclip.Upfile
+updated_at	lib/paperclip/attachment.rb	/^    def updated_at$/;"	f	class:Paperclip.Attachment
+updated_at	lib/paperclip/interpolations.rb	/^    def updated_at attachment, style_name$/;"	f	class:Paperclip
+uploaded_file	lib/paperclip/attachment.rb	/^    def uploaded_file$/;"	f	class:Paperclip.Attachment
+url	lib/paperclip/attachment.rb	/^    def url(style_name = default_style, options = {})$/;"	f	class:Paperclip.Attachment
+url	lib/paperclip/interpolations.rb	/^    def url attachment, style_name$/;"	f	class:Paperclip
+url	test/interpolations_test.rb	/^      def url(*args)$/;"	f
+using_http_proxy?	lib/paperclip/storage/s3.rb	/^      def using_http_proxy?$/;"	f	class:Paperclip.Storage.S3
+valid_assignment?	lib/paperclip/attachment.rb	/^    def valid_assignment? file #:nodoc:$/;"	f	class:Paperclip.Attachment
+validate_attachment_content_type	lib/paperclip/matchers/validate_attachment_content_type_matcher.rb	/^      def validate_attachment_content_type name$/;"	f	class:Paperclip.Shoulda.Matchers
+validate_attachment_presence	lib/paperclip/matchers/validate_attachment_presence_matcher.rb	/^      def validate_attachment_presence name$/;"	f	class:Paperclip.Shoulda.Matchers
+validate_attachment_size	lib/paperclip/matchers/validate_attachment_size_matcher.rb	/^      def validate_attachment_size name$/;"	f	class:Paperclip.Shoulda.Matchers
+validates_attachment_content_type	lib/paperclip.rb	/^    def validates_attachment_content_type name, options = {}$/;"	f
+validates_attachment_presence	lib/paperclip.rb	/^    def validates_attachment_presence name, options = {}$/;"	f
+validates_attachment_size	lib/paperclip.rb	/^    def validates_attachment_size name, options = {}$/;"	f
+validates_attachment_thumbnails	lib/paperclip.rb	/^    def validates_attachment_thumbnails name, options = {}$/;"	f
+vertical?	lib/paperclip/geometry.rb	/^    def vertical?$/;"	f	class:Paperclip.Geometry
+whiny	lib/paperclip/style.rb	/^    def whiny$/;"	f	class:Paperclip.Style
+whiny?	lib/paperclip/style.rb	/^    def whiny?$/;"	f	class:Paperclip.Style
+with_exitstatus_returning	test/helper.rb	/^def with_exitstatus_returning(code)$/;"	f
+with_scope	features/step_definitions/web_steps.rb	/^  def with_scope(locator)$/;"	f	class:WithinHelpers

@@ -107,6 +107,7 @@ module Paperclip
 
       uploaded_filename ||= uploaded_file.original_filename
       @queued_for_write[:original]   = to_tempfile(uploaded_file)
+      @tempfile = @queued_for_write[:original]
       instance_write(:file_name,       uploaded_filename.strip)
       instance_write(:content_type,    uploaded_file.content_type.to_s.strip)
       instance_write(:file_size,       uploaded_file.size.to_i)
@@ -118,8 +119,8 @@ module Paperclip
       post_process(*@options[:only_process]) if post_processing
 
       # Reset the file size if the original file was reprocessed.
-      instance_write(:file_size,   @queued_for_write[:original].size.to_i)
-      instance_write(:fingerprint, generate_fingerprint(@queued_for_write[:original]))
+      instance_write(:file_size,   @tempfile.size.to_i)
+      instance_write(:fingerprint, generate_fingerprint(@tempfile))
     ensure
       uploaded_file.close if close_uploaded_file
     end
@@ -210,6 +211,7 @@ module Paperclip
     def save
       flush_deletes unless @options[:keep_old_files]
       flush_writes
+      after_flush_writes
       @dirty = false
       true
     end
@@ -218,7 +220,13 @@ module Paperclip
     # nil to the attachment. Does NOT save. If you wish to clear AND save,
     # use #destroy.
     def clear
-      queue_existing_for_delete
+      if !@options[:preserve_files] && file?
+        queue_existing_for_delete
+        instance_write(:file_name, nil)
+        instance_write(:content_type, nil)
+        instance_write(:file_size, nil)
+        instance_write(:updated_at, nil)
+      end
       @queued_for_write  = {}
       @errors            = {}
     end
@@ -247,13 +255,13 @@ module Paperclip
     # Returns the size of the file as originally assigned, and lives in the
     # <attachment>_file_size attribute of the model.
     def size
-      instance_read(:file_size) || (@queued_for_write[:original] && @queued_for_write[:original].size)
+      instance_read(:file_size) || (@tempfile && @tempfile.size)
     end
 
     # Returns the hash of the file as originally assigned, and lives in the
     # <attachment>_fingerprint attribute of the model.
     def fingerprint
-      instance_read(:fingerprint) || (@queued_for_write[:original] && generate_fingerprint(@queued_for_write[:original]))
+      instance_read(:fingerprint) || (@tempfile && generate_fingerprint(@tempfile))
     end
 
     # Returns the content_type of the file as originally assigned, and lives
@@ -318,6 +326,7 @@ module Paperclip
         new_original.rewind
 
         @queued_for_write = { :original => new_original }
+        @tempfile = @queued_for_write[:original]
         instance_write(:updated_at, Time.now)
         post_process(*style_args)
 
@@ -411,43 +420,58 @@ module Paperclip
     end
 
     def post_process(*style_args) #:nodoc:
-      return if @queued_for_write[:original].nil?
+      return if @tempfile.nil?
       instance.run_paperclip_callbacks(:post_process) do
         instance.run_paperclip_callbacks(:"#{name}_post_process") do
-          post_process_styles(*style_args)
+          @queued_for_write = Hash[[post_process_styles(*style_args)]]
         end
       end
     end
 
+
+
+
+
     def post_process_styles(*style_args) #:nodoc:
-      styles.each do |name, style|
-        begin
-          if style_args.empty? || style_args.include?(name)
-            raise RuntimeError.new("Style #{name} has no processors defined.") if style.processors.blank?
-            @queued_for_write[name] = style.processors.inject(@queued_for_write[:original]) do |file, processor|
-              Paperclip.processor(processor).make(file, style.processor_options, self)
-            end
-          end
-        rescue PaperclipError => e
-          log("An error was received while processing: #{e.inspect}")
-          (@errors[:processing] ||= []) << e.message if @options[:whiny]
-        end
+      styles_to_process(style_args).map do |name, style|
+        raise RuntimeError.new("Style #{name} has no processors defined.") if style.processors.blank?
+        [name, style.processors.inject(@tempfile) do |file, processor|
+            Paperclip.processor(processor).make(file, style.processor_options, self)
+        end]
       end
     end
+
+#      styles.each do |name, style|
+#        begin
+#          if style_args.empty? || style_args.include?(name)
+#            raise RuntimeError.new("Style #{name} has no processors defined.") if style.processors.blank?
+#            @queued_for_write[name] = style.processors.inject(@tempfile) do |file, processor|
+#              Paperclip.processor(processor).make(file, style.processor_options, self)
+#            end
+#          end
+#        rescue PaperclipError => e
+#          log("An error was received while processing: #{e.inspect}")
+#          (@errors[:processing] ||= []) << e.message if @options[:whiny]
+#        end
+#      end
+#    end
+
+    def styles_to_process(style_args)
+      style_args.empty? ? styles : styles.select{|n,_| style_args.include?(n)}
+    end
+
+
+
+
 
     def interpolate(pattern, style_name = default_style) #:nodoc:
       interpolator.interpolate(pattern, self, style_name)
     end
 
     def queue_existing_for_delete #:nodoc:
-      return if @options[:preserve_files] || !file?
       @queued_for_delete += [:original, *styles.keys].uniq.map do |style|
         path(style) if exists?(style)
       end.compact
-      instance_write(:file_name, nil)
-      instance_write(:content_type, nil)
-      instance_write(:file_size, nil)
-      instance_write(:updated_at, nil)
     end
 
     def flush_errors #:nodoc:
@@ -458,9 +482,12 @@ module Paperclip
 
     # called by storage after the writes are flushed and before @queued_for_writes is cleared
     def after_flush_writes
-      @queued_for_write.each do |style, file|
-        file.close unless file.closed?
-        file.unlink if file.respond_to?(:unlink) && file.path.present? && File.exist?(file.path)
+      if @tempfile.present?
+        @tempfile.close unless @tempfile.closed?
+        begin
+          @tempfile.unlink if @tempfile.respond_to?(:unlink) && @tempfile.path.present?
+        rescue Errno::ENOENT
+        end
       end
     end
 

@@ -285,8 +285,10 @@ module Paperclip
           end
         end
 
-        after_flush_writes # allows attachment to clean up temp files
-
+      @queued_for_write.each do |style, file|
+        file.close unless file.closed?
+        file.unlink if file.respond_to?(:unlink) && file.path.present? && File.exist?(file.path)
+      end
         @queued_for_write = {}
       end
 
