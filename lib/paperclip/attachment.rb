@@ -423,46 +423,33 @@ module Paperclip
       return if @tempfile.nil?
       instance.run_paperclip_callbacks(:post_process) do
         instance.run_paperclip_callbacks(:"#{name}_post_process") do
-          @queued_for_write = Hash[[post_process_styles(*style_args)]]
+          @queued_for_write = {:original => @tempfile}.merge(post_process_styles(style_args))
         end
       end
     end
 
-
-
-
-
-    def post_process_styles(*style_args) #:nodoc:
-      styles_to_process(style_args).map do |name, style|
+    # Produce a mapping of style name to processed attachment under that style.
+    def post_process_styles(style_args) #:nodoc:
+      styles_to_process(style_args).inject({}) do |hash, (name, style)|
         raise RuntimeError.new("Style #{name} has no processors defined.") if style.processors.blank?
-        [name, style.processors.inject(@tempfile) do |file, processor|
+        begin
+          processed_attachment = style.processors.inject(@tempfile) do |file, processor|
             Paperclip.processor(processor).make(file, style.processor_options, self)
-        end]
+          end
+          hash.update(name => processed_attachment)
+        rescue PaperclipError => e
+          log("An error was received while processing: #{e.inspect}")
+          (@errors[:processing] ||= []) << e.message if @options[:whiny]
+          hash
+        end
       end
     end
 
-#      styles.each do |name, style|
-#        begin
-#          if style_args.empty? || style_args.include?(name)
-#            raise RuntimeError.new("Style #{name} has no processors defined.") if style.processors.blank?
-#            @queued_for_write[name] = style.processors.inject(@tempfile) do |file, processor|
-#              Paperclip.processor(processor).make(file, style.processor_options, self)
-#            end
-#          end
-#        rescue PaperclipError => e
-#          log("An error was received while processing: #{e.inspect}")
-#          (@errors[:processing] ||= []) << e.message if @options[:whiny]
-#        end
-#      end
-#    end
-
+    # Produce either the styles included in the given list or, if the list is
+    # empty, all styles.
     def styles_to_process(style_args)
       style_args.empty? ? styles : styles.select{|n,_| style_args.include?(n)}
     end
-
-
-
-
 
     def interpolate(pattern, style_name = default_style) #:nodoc:
       interpolator.interpolate(pattern, self, style_name)

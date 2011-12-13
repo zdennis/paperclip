@@ -686,7 +686,6 @@ class AttachmentTest < Test::Unit::TestCase
       @dummy = Dummy.new
       @attachment = @dummy.avatar
       @attachment.expects(:valid_assignment?).with(@not_file).returns(true)
-      @attachment.expects(:queue_existing_for_delete)
       @attachment.expects(:post_process)
       @attachment.expects(:to_tempfile).returns(@tempfile)
       @attachment.expects(:generate_fingerprint).with(@tempfile).returns("12345")
