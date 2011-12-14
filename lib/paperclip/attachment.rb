@@ -106,8 +106,7 @@ module Paperclip
       return nil if uploaded_file.nil?
 
       uploaded_filename ||= uploaded_file.original_filename
-      @queued_for_write[:original]   = to_tempfile(uploaded_file)
-      @tempfile = @queued_for_write[:original]
+      @tempfile   = to_tempfile(uploaded_file)
       instance_write(:file_name,       uploaded_filename.strip)
       instance_write(:content_type,    uploaded_file.content_type.to_s.strip)
       instance_write(:file_size,       uploaded_file.size.to_i)
@@ -116,7 +115,9 @@ module Paperclip
 
       @dirty = true
 
-      post_process(*@options[:only_process]) if post_processing
+      if post_processing
+        @tempfile = post_process(@options[:only_process])
+      end
 
       # Reset the file size if the original file was reprocessed.
       instance_write(:file_size,   @tempfile.size.to_i)
@@ -325,10 +326,9 @@ module Paperclip
         new_original.write( old_original.respond_to?(:get) ? old_original.get : old_original.read )
         new_original.rewind
 
-        @queued_for_write = { :original => new_original }
-        @tempfile = @queued_for_write[:original]
+        @tempfile = new_original
         instance_write(:updated_at, Time.now)
-        post_process(*style_args)
+        @tempfile = post_process(style_args)
 
         old_original.close if old_original.respond_to?(:close)
         old_original.unlink if old_original.respond_to?(:unlink)
@@ -419,13 +419,14 @@ module Paperclip
       [ style_options, all_options ].compact.join(" ")
     end
 
-    def post_process(*style_args) #:nodoc:
-      return if @tempfile.nil?
+    def post_process(style_args) #:nodoc:
+      return @tempfile if @tempfile.nil? ### this never happens
       instance.run_paperclip_callbacks(:post_process) do
         instance.run_paperclip_callbacks(:"#{name}_post_process") do
           @queued_for_write = {:original => @tempfile}.merge(post_process_styles(style_args))
         end
       end
+      @queued_for_write[:original] || @tempfile
     end
 
     # Produce a mapping of style name to processed attachment under that style.

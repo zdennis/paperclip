@@ -338,8 +338,8 @@ class AttachmentTest < Test::Unit::TestCase
     end
 
     should "only process the provided style" do
-      @attachment.expects(:post_process).with(:thumb)
-      @attachment.expects(:post_process).with(:large).never
+      @attachment.expects(:post_process).with([:thumb]).returns(@file)
+      @attachment.expects(:post_process).with([:large]).never
       @attachment.assign(@file)
     end
   end
@@ -686,7 +686,7 @@ class AttachmentTest < Test::Unit::TestCase
       @dummy = Dummy.new
       @attachment = @dummy.avatar
       @attachment.expects(:valid_assignment?).with(@not_file).returns(true)
-      @attachment.expects(:post_process)
+      @attachment.expects(:post_process).returns(@tempfile)
       @attachment.expects(:to_tempfile).returns(@tempfile)
       @attachment.expects(:generate_fingerprint).with(@tempfile).returns("12345")
       @attachment.expects(:generate_fingerprint).with(@not_file).returns("12345")
