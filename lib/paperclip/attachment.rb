@@ -1,6 +1,7 @@
 # encoding: utf-8
 require 'uri'
 require 'paperclip/url_generator'
+require 'paperclip/shim_vault'
 
 module Paperclip
   # The Attachment class manages the files for a given attachment. It saves
@@ -28,7 +29,8 @@ module Paperclip
         :hash_data             => ":class/:attachment/:id/:style/:updated_at",
         :preserve_files        => false,
         :interpolator          => Paperclip::Interpolations,
-        :url_generator         => Paperclip::UrlGenerator
+        :url_generator         => Paperclip::UrlGenerator,
+        :vault                 => Paperclip::ShimVault
       }
     end
 
@@ -77,8 +79,7 @@ module Paperclip
       @url_generator         = options[:url_generator].new(self, @options)
       @source_file_options   = options[:source_file_options]
       @whiny                 = options[:whiny]
-
-      initialize_storage
+      @vault                 = options[:vault].new(self, @options)
     end
 
     # What gets called when you call instance.attachment = File. It clears
@@ -106,12 +107,12 @@ module Paperclip
       return nil if uploaded_file.nil?
 
       uploaded_filename ||= uploaded_file.original_filename
-      @tempfile   = to_tempfile(uploaded_file)
-      instance_write(:file_name,       uploaded_filename.strip)
-      instance_write(:content_type,    uploaded_file.content_type.to_s.strip)
-      instance_write(:file_size,       uploaded_file.size.to_i)
-      instance_write(:fingerprint,     generate_fingerprint(uploaded_file))
-      instance_write(:updated_at,      Time.now)
+      @tempfile = to_tempfile(uploaded_file)
+      instance_write(:file_name,    uploaded_filename.strip)
+      instance_write(:content_type, uploaded_file.content_type.to_s.strip)
+      instance_write(:file_size,    uploaded_file.size.to_i)
+      instance_write(:fingerprint,  generate_fingerprint(uploaded_file))
+      instance_write(:updated_at,   Time.now)
 
       @dirty = true
 
@@ -210,11 +211,10 @@ module Paperclip
     # Saves the file, if there are no errors. If there are, it flushes them to
     # the instance's errors and returns false, cancelling the save.
     def save
-      flush_deletes unless @options[:keep_old_files]
-      flush_writes
-      after_flush_writes
-      @dirty = false
-      true
+      @vault.save.tap do
+        clear_tempfile
+        @dirty = false
+      end
     end
 
     # Clears out the attachment. Has the same effect as previously assigning
@@ -222,13 +222,12 @@ module Paperclip
     # use #destroy.
     def clear
       if !@options[:preserve_files] && file?
-        queue_existing_for_delete
+        @vault.clear(style_path_map)
         instance_write(:file_name, nil)
         instance_write(:content_type, nil)
         instance_write(:file_size, nil)
         instance_write(:updated_at, nil)
       end
-      @queued_for_write  = {}
       @errors            = {}
     end
 
@@ -236,10 +235,12 @@ module Paperclip
     # nil to the attachment *and saving*. This is permanent. If you wish to
     # wipe out the existing attachment but not save, use #clear.
     def destroy
-      unless @options[:preserve_files]
-        clear
-        save
-      end
+      clear
+      save
+    end
+
+    def to_file(*a)
+      @vault.to_file(*a)
     end
 
     # Returns the uploaded file if present.
@@ -371,6 +372,12 @@ module Paperclip
 
     private
 
+    def style_path_map
+      styles.inject({:original => path(:original)}) do |result, (style_name, _)|
+        result.merge(style_name => path(style_name))
+      end
+    end
+
     def path_option
       @options[:path].respond_to?(:call) ? @options[:path].call(self) : @options[:path]
     end
@@ -389,16 +396,6 @@ module Paperclip
 
     def valid_assignment? file #:nodoc:
       file.nil? || (file.respond_to?(:original_filename) && file.respond_to?(:content_type))
-    end
-
-    def initialize_storage #:nodoc:
-      storage_class_name = @options[:storage].to_s.downcase.camelize
-      begin
-        storage_module = Paperclip::Storage.const_get(storage_class_name)
-      rescue NameError
-        raise StorageMethodNotFound, "Cannot load storage module '#{storage_class_name}'"
-      end
-      self.extend(storage_module)
     end
 
     def extra_options_for(style) #:nodoc:
@@ -421,12 +418,16 @@ module Paperclip
 
     def post_process(style_args) #:nodoc:
       return @tempfile if @tempfile.nil? ### this never happens
+      processed_files = {:original => @tempfile}
       instance.run_paperclip_callbacks(:post_process) do
         instance.run_paperclip_callbacks(:"#{name}_post_process") do
-          @queued_for_write = {:original => @tempfile}.merge(post_process_styles(style_args))
+          processed_files = processed_files.merge(post_process_styles(style_args))
+          processed_files.each do |style_name, filehandle|
+            @vault.store(style_name, filehandle)
+          end
         end
       end
-      @queued_for_write[:original] || @tempfile
+      processed_files[:original] || @tempfile
     end
 
     # Produce a mapping of style name to processed attachment under that style.
@@ -456,12 +457,6 @@ module Paperclip
       interpolator.interpolate(pattern, self, style_name)
     end
 
-    def queue_existing_for_delete #:nodoc:
-      @queued_for_delete += [:original, *styles.keys].uniq.map do |style|
-        path(style) if exists?(style)
-      end.compact
-    end
-
     def flush_errors #:nodoc:
       @errors.each do |error, message|
         [message].flatten.each {|m| instance.errors.add(name, m) }
@@ -469,7 +464,7 @@ module Paperclip
     end
 
     # called by storage after the writes are flushed and before @queued_for_writes is cleared
-    def after_flush_writes
+    def clear_tempfile
       if @tempfile.present?
         @tempfile.close unless @tempfile.closed?
         begin

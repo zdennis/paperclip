@@ -464,14 +464,14 @@ module Paperclip
     def save_attached_files
       Paperclip.log("Saving attachments.")
       each_attachment do |name, attachment|
-        attachment.send(:save)
+        attachment.save
       end
     end
 
     def destroy_attached_files
       Paperclip.log("Deleting attachments.")
       each_attachment do |name, attachment|
-        attachment.send(:flush_deletes)
+        attachment.destroy
       end
     end
 

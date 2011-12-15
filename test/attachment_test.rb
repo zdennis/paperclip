@@ -112,16 +112,6 @@ class AttachmentTest < Test::Unit::TestCase
       end
     end
 
-    context "without an Attachment" do
-      setup do
-        @dummy = Dummy.new
-      end
-
-      should "return false when asked exists?" do
-        assert !@dummy.avatar.exists?
-      end
-    end
-
     context "on an Attachment" do
       setup do
         @dummy = Dummy.new
@@ -537,39 +527,6 @@ class AttachmentTest < Test::Unit::TestCase
     end
   end
 
-  should "include the filesystem module when loading the filesystem storage" do
-    rebuild_model :storage => :filesystem
-    @dummy = Dummy.new
-    assert @dummy.avatar.is_a?(Paperclip::Storage::Filesystem)
-  end
-
-  should "include the filesystem module even if capitalization is wrong" do
-    rebuild_model :storage => :FileSystem
-    @dummy = Dummy.new
-    assert @dummy.avatar.is_a?(Paperclip::Storage::Filesystem)
-
-    rebuild_model :storage => :Filesystem
-    @dummy = Dummy.new
-    assert @dummy.avatar.is_a?(Paperclip::Storage::Filesystem)
-  end
-
-  should "convert underscored storage name to camelcase" do
-    rebuild_model :storage => :not_here
-    @dummy = Dummy.new
-    exception = assert_raises(Paperclip::StorageMethodNotFound) do
-      @dummy.avatar
-    end
-    assert exception.message.include?("NotHere")
-  end
-
-  should "raise an error if you try to include a storage module that doesn't exist" do
-    rebuild_model :storage => :not_here
-    @dummy = Dummy.new
-    assert_raises(Paperclip::StorageMethodNotFound) do
-      @dummy.avatar
-    end
-  end
-
   context "An attachment with styles but no processors defined" do
     setup do
       rebuild_model :processors => [], :styles => {:something => '1'}
@@ -770,15 +727,6 @@ class AttachmentTest < Test::Unit::TestCase
       assert_equal nil, @attachment.path(:blah)
     end
 
-    context "with a file assigned but not saved yet" do
-      should "clear out any attached files" do
-        @attachment.assign(@file)
-        assert !@attachment.queued_for_write.blank?
-        @attachment.clear
-        assert @attachment.queued_for_write.blank?
-      end
-    end
-
     context "with a file assigned in the database" do
       setup do
         @attachment.stubs(:instance_read).with(:file_name).returns("5k.png")
@@ -930,16 +878,6 @@ class AttachmentTest < Test::Unit::TestCase
             end
           end
         end
-      end
-    end
-
-    context "when trying a nonexistant storage type" do
-      setup do
-        rebuild_model :storage => :not_here
-      end
-
-      should "not be able to find the module" do
-        assert_raise(Paperclip::StorageMethodNotFound){ Dummy.new.avatar }
       end
     end
   end
