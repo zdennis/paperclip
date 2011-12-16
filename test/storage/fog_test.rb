@@ -4,68 +4,72 @@ require 'fog'
 Fog.mock!
 
 class FogTest < Test::Unit::TestCase
-  context "" do
+  def create_fog_shim_vault(options = {})
+    default_options = Paperclip::Attachment.default_options.merge(:storage => :fog)
+    options = default_options.merge(options)
+    rebuild_model(options)
+    model = Dummy.new
+    model.avatar = File.new(fixture_file('5k.png'), 'rb')
+    attachment = model.avatar
+    Paperclip::ShimVault.new(attachment, options)
+  end
 
-    context "with credentials provided in a path string" do
-      setup do
-        rebuild_model :styles => { :medium => "300x300>", :thumb => "100x100>" },
-                      :storage => :fog,
-                      :url => '/:attachment/:filename',
-                      :fog_directory => "paperclip",
-                      :fog_credentials => fixture_file('fog.yml')
-        @dummy = Dummy.new
-        @dummy.avatar = File.new(fixture_file('5k.png'), 'rb')
-      end
+  should "expose the fog_public option" do
+    vault = create_fog_shim_vault(:fog_public => false)
+    assert ! vault.fog_public
+  end
 
-      should "have the proper information loading credentials from a file" do
-        assert_equal @dummy.avatar.fog_credentials[:provider], 'AWS'
-      end
+  should "have the proper information loading credentials from a file with credentials provided in a path string" do
+    vault = create_fog_shim_vault(
+      :styles => { :medium => "300x300>", :thumb => "100x100>" },
+      :storage => :fog,
+      :url => '/:attachment/:filename',
+      :fog_directory => "paperclip",
+      :fog_credentials => fixture_file('fog.yml'))
+
+    assert_equal vault.fog_credentials[:provider], 'AWS'
+  end
+
+  should "have the proper information loading credentials from a file with credentials provided in a File object" do
+    vault = create_fog_shim_vault(
+      :styles => { :medium => "300x300>", :thumb => "100x100>" },
+      :storage => :fog,
+      :url => '/:attachment/:filename',
+      :fog_directory => "paperclip",
+      :fog_credentials => File.new(fixture_file('fog.yml')))
+
+    assert_equal vault.fog_credentials[:provider], 'AWS'
+  end
+
+  context "with default values for path and url" do
+    setup do
+      rebuild_model :styles => { :medium => "300x300>", :thumb => "100x100>" },
+                    :storage => :fog,
+                    :url => '/:attachment/:filename',
+                    :fog_directory => "paperclip",
+                    :fog_credentials => {
+                      :provider => 'AWS',
+                      :aws_access_key_id => 'AWS_ID',
+                      :aws_secret_access_key => 'AWS_SECRET'
+                    }
+      @dummy = Dummy.new
+      @dummy.avatar = File.new(fixture_file('5k.png'), 'rb')
+    end
+    should "be able to interpolate the path without blowing up" do
+      assert_equal File.expand_path(File.join(File.dirname(__FILE__), "../../public/avatars/5k.png")),
+                   @dummy.avatar.path
     end
 
-    context "with credentials provided in a File object" do
-      setup do
-        rebuild_model :styles => { :medium => "300x300>", :thumb => "100x100>" },
-                      :storage => :fog,
-                      :url => '/:attachment/:filename',
-                      :fog_directory => "paperclip",
-                      :fog_credentials => File.open(fixture_file('fog.yml'))
-        @dummy = Dummy.new
-        @dummy.avatar = File.new(fixture_file('5k.png'), 'rb')
-      end
+    should "clean up file objects" do
+      File.stubs(:exist?).returns(true)
+      Paperclip::Tempfile.any_instance.expects(:close).at_least_once()
+      Paperclip::Tempfile.any_instance.expects(:unlink).at_least_once()
 
-      should "have the proper information loading credentials from a file" do
-        assert_equal @dummy.avatar.fog_credentials[:provider], 'AWS'
-      end
+      @dummy.save!
     end
+  end
 
-    context "with default values for path and url" do
-      setup do
-        rebuild_model :styles => { :medium => "300x300>", :thumb => "100x100>" },
-                      :storage => :fog,
-                      :url => '/:attachment/:filename',
-                      :fog_directory => "paperclip",
-                      :fog_credentials => {
-                        :provider => 'AWS',
-                        :aws_access_key_id => 'AWS_ID',
-                        :aws_secret_access_key => 'AWS_SECRET'
-                      }
-        @dummy = Dummy.new
-        @dummy.avatar = File.new(fixture_file('5k.png'), 'rb')
-      end
-      should "be able to interpolate the path without blowing up" do
-        assert_equal File.expand_path(File.join(File.dirname(__FILE__), "../../public/avatars/5k.png")),
-                     @dummy.avatar.path
-      end
-
-      should "clean up file objects" do
-        File.stubs(:exist?).returns(true)
-        Paperclip::Tempfile.any_instance.expects(:close).at_least_once()
-        Paperclip::Tempfile.any_instance.expects(:unlink).at_least_once()
-
-        @dummy.save!
-      end
-    end
-
+  context "wtf" do
     setup do
       @fog_directory = 'papercliptests'
 
@@ -90,10 +94,6 @@ class FogTest < Test::Unit::TestCase
       }
 
       rebuild_model(@options)
-    end
-
-    should "be extended by the Fog module" do
-      assert Dummy.new.avatar.is_a?(Paperclip::Storage::Fog)
     end
 
     context "when assigned" do
@@ -172,20 +172,6 @@ class FogTest < Test::Unit::TestCase
         end
       end
 
-      context "with fog_public set to false" do
-        setup do
-          rebuild_model(@options.merge(:fog_public => false))
-          @dummy = Dummy.new
-          @dummy.avatar = StringIO.new('.')
-          @dummy.save
-        end
-
-        should 'set the @fog_public instance variable to false' do
-          assert_equal false, @dummy.avatar.instance_variable_get('@options')[:fog_public]
-          assert_equal false, @dummy.avatar.fog_public
-        end
-      end
-
       context "with a valid bucket name for a subdomain" do
         should "provide an url in subdomain style" do
           assert_match /^https:\/\/papercliptests.s3.amazonaws.com\/avatars\/5k.png\?\d*$/, @dummy.avatar.url
@@ -214,6 +200,5 @@ class FogTest < Test::Unit::TestCase
       end
 
     end
-
   end
 end
