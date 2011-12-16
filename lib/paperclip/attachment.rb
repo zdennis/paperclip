@@ -35,7 +35,7 @@ module Paperclip
     end
 
     attr_reader :name, :instance, :default_style, :convert_options, :queued_for_write, :whiny, :options, :interpolator
-    attr_reader :source_file_options, :whiny
+    attr_reader :source_file_options, :whiny, :vault
     attr_accessor :post_processing
 
     # Creates an Attachment object. +name+ is the name of the attachment,
@@ -454,7 +454,7 @@ module Paperclip
     end
 
     def interpolate(pattern, style_name = default_style) #:nodoc:
-      interpolator.interpolate(pattern, self, style_name)
+      interpolator.interpolate(pattern, @vault, style_name)
     end
 
     def flush_errors #:nodoc:

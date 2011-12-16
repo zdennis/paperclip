@@ -49,20 +49,24 @@ module Paperclip
       self.extend(storage_module)
     end
 
-    def path(*a)
-      @attachment.path(*a)
-    end
-
-    def original_filename
-      @attachment.original_filename
-    end
-
     def log(*a)
       @attachment.__send__(:log,*a)
     end
 
-    def default_style
-      @attachment.default_style
+    def hash(*a)
+      @attachment.hash(*a)
+    end
+
+    def method_missing(method_name, *arguments)
+      if @attachment.respond_to?(method_name)
+        @attachment.__send__(method_name, *arguments)
+      else
+        super
+      end
+    end
+
+    def respond_to?(method_name)
+      @attachment.respond_to?(method_name) || super
     end
   end
 end
