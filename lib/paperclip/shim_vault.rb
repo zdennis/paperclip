@@ -10,6 +10,7 @@ module Paperclip
       @queued_for_delete = []
       @options = options
       @attachment = attachment
+      @url_generator = options[:url_generator].new(@attachment, @options)
 
       initialize_storage
     end
@@ -35,6 +36,16 @@ module Paperclip
     def destroy(styles)
       clear(styles)
       save
+    end
+
+    def url(style_name = default_style, options = {})
+      default_options = {:timestamp => @options[:use_timestamp], :escape => true}
+
+      if options == true || options == false # Backwards compatibility.
+        @url_generator.for(style_name, default_options.merge(:timestamp => options))
+      else
+        @url_generator.for(style_name, default_options.merge(options))
+      end
     end
 
     def path(style_name = default_style)

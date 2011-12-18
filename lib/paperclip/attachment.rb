@@ -76,7 +76,6 @@ module Paperclip
       @errors                = {}
       @dirty                 = false
       @interpolator          = options[:interpolator]
-      @url_generator         = options[:url_generator].new(self, @options)
       @source_file_options   = options[:source_file_options]
       @whiny                 = options[:whiny]
       @vault                 = options[:vault].new(self, @options)
@@ -151,13 +150,7 @@ module Paperclip
     # +#new(Paperclip::Attachment, options_hash)+
     # +#for(style_name, options_hash)+
     def url(style_name = default_style, options = {})
-      default_options = {:timestamp => @options[:use_timestamp], :escape => true}
-
-      if options == true || options == false # Backwards compatibility.
-        @url_generator.for(style_name, default_options.merge(:timestamp => options))
-      else
-        @url_generator.for(style_name, default_options.merge(options))
-      end
+      @vault.url(style_name, options)
     end
 
     # Returns the path of the attachment as defined by the :path option. If the
