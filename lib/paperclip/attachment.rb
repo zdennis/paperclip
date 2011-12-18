@@ -119,6 +119,7 @@ module Paperclip
       if post_processing
         @tempfile = post_process(@options[:only_process])
       end
+      @vault.store(:original, @tempfile)
 
       # Reset the file size if the original file was reprocessed.
       instance_write(:file_size,   @tempfile.size.to_i)
@@ -164,8 +165,7 @@ module Paperclip
     # on disk. If the file is stored in S3, the path is the "key" part of the
     # URL, and the :bucket option refers to the S3 bucket.
     def path(style_name = default_style)
-      path = original_filename.nil? ? nil : interpolate(path_option, style_name)
-      path.respond_to?(:unescape) ? path.unescape : path
+      @vault.path(style_name)
     end
 
     # Alias to +url+
@@ -221,8 +221,8 @@ module Paperclip
     # nil to the attachment. Does NOT save. If you wish to clear AND save,
     # use #destroy.
     def clear
-      if !@options[:preserve_files] && file?
-        @vault.clear(style_path_map)
+      if delete_files?
+        @vault.clear(styles)
         instance_write(:file_name, nil)
         instance_write(:content_type, nil)
         instance_write(:file_size, nil)
@@ -372,14 +372,8 @@ module Paperclip
 
     private
 
-    def style_path_map
-      styles.inject({:original => path(:original)}) do |result, (style_name, _)|
-        result.merge(style_name => path(style_name))
-      end
-    end
-
-    def path_option
-      @options[:path].respond_to?(:call) ? @options[:path].call(self) : @options[:path]
+    def delete_files?
+      !@options[:preserve_files] && file?
     end
 
     def ensure_required_accessors! #:nodoc:

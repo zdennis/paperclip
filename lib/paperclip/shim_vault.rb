@@ -25,8 +25,9 @@ module Paperclip
     end
 
     def clear(styles)
-      @queued_for_delete += [:original, *styles.keys].uniq.map do |style|
-        styles[style] if exists?(style)
+      styles_with_paths = style_path_map(styles)
+      @queued_for_delete += [:original, *styles_with_paths.keys].uniq.map do |style|
+        styles_with_paths[style] if exists?(style)
       end.compact
       @queued_for_write = {}
     end
@@ -36,7 +37,22 @@ module Paperclip
       save
     end
 
+    def path(style_name = default_style)
+      if file_attached?
+        path = interpolate(path_option, style_name)
+        path.respond_to?(:unescape) ? path.unescape : path
+      else
+        nil
+      end
+    end
+
+    # also responds to #to_file
+
     private
+
+    def file_attached?
+      !@attachment.original_filename.nil?
+    end
 
     def initialize_storage
       storage_class_name = @options[:storage].to_s.downcase.camelize
@@ -45,8 +61,21 @@ module Paperclip
       rescue NameError
         raise StorageMethodNotFound, "Cannot load storage module '#{storage_class_name}'"
       end
-      #puts "about to extend #{self.class.name} with #{storage_module.inspect}"
       self.extend(storage_module)
+    end
+
+    def path_option
+      @options[:path].respond_to?(:call) ? @options[:path].call(self) : @options[:path]
+    end
+
+    def interpolate(pattern, style_name)
+      @options[:interpolator].interpolate(pattern, self, style_name)
+    end
+
+    def style_path_map(styles)
+      styles.inject({:original => path(:original)}) do |result, (style_name, _)|
+        result.merge(style_name => path(style_name))
+      end
     end
 
     def log(*a)

@@ -478,7 +478,7 @@ module Paperclip
     def prepare_for_destroy
       Paperclip.log("Scheduling attachments for deletion.")
       each_attachment do |name, attachment|
-        attachment.send(:clear)
+        attachment.clear
       end
     end
 
