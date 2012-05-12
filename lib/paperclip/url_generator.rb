@@ -1,4 +1,5 @@
 require 'uri'
+require 'active_support/core_ext/object/blank'
 
 module Paperclip
   class UrlGenerator
