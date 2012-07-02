@@ -37,4 +37,14 @@ class ContentTypeDetectorTest < Test::Unit::TestCase
       assert_equal "application/octet-stream", Paperclip::ContentTypeDetector.new(@filename).detect
     end
   end
+
+  context 'given a file name that doe not match the content type' do
+    should 'return the actual content type' do
+      tempfile = Tempfile.new("this-is-not-a.pdf")
+      tempfile.write("This is a file.")
+      tempfile.rewind
+
+      assert_equal "text/plain", Paperclip::ContentTypeDetector.new(tempfile.path).detect
+    end
+  end
 end

@@ -12,6 +12,8 @@ module Paperclip
         SENSIBLE_DEFAULT
       elsif empty?
         EMPTY_TYPE
+      elsif File.exist?(@filename) && has_file_command?
+        type_from_file_command
       elsif !match?
         type_from_file_command
       elsif !multiple?
@@ -22,6 +24,11 @@ module Paperclip
     end
 
     private
+
+    def has_file_command?
+      `which file`
+      $?.exitstatus == 0
+    end
 
     def empty?
       File.exists?(@filename) && File.size(@filename) == 0
